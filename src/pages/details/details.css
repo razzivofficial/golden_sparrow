@@ -1,0 +1,48 @@
+#gparent_div {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#parent_div2 {
+  margin-left: 0px;
+  padding: 3%;
+  text-align: left;
+}
+
+#price_div {
+  display: flex;
+  gap: 5px;
+}
+
+.cPrice {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-weight: 700;
+}
+.price {
+  text-decoration: line-through;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+#child_div4 {
+  display: flex;
+  align-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: #8863fb;
+  height: 48px;
+  width: 180px;
+  margin-left: 2%;
+}
+
+.p_color {
+  color: #8863fb;
+}
