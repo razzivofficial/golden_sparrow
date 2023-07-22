@@ -24,6 +24,7 @@ import {
   InputGroup,
   InputRightElement,
   background,
+  Text,
 } from "@chakra-ui/react";
 import { FaUserAlt } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
@@ -72,10 +73,11 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box
+              display={"flex"}
               w={{ base: "10rem", md: "15rem" }}
               fontSize={{ sm: "10px", md: "20px" }}>
               <ReactIcon mr={"8px"} fontSize={{ md: "35px" }} />
-              GOLDENSPARROW
+              <Text>GOLDENSPARROW</Text>
             </Box>
             <HStack
               as={"nav"}
