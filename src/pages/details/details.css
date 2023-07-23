@@ -46,3 +46,95 @@
 .p_color {
   color: #8863fb;
 }
+
+.condition_div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item {
+  background-color: #1c0333;
+  display: flex;
+  width: 100%;
+  height: 200px;
+}
+
+.item img {
+  background-color: #1c0333;
+}
+
+.item h5,
+p {
+  color: white;
+  justify-content: center;
+}
+@media (max-width: 576px) {
+  #gparent_div {
+    display: block;
+  }
+  .condition_div {
+    display: block;
+    width: 100%;
+  }
+}
+
+.greetings_div {
+  display: flex;
+  padding: 1% 0.5%;
+}
+
+.greetings_div h3 {
+  margin-top: 4%;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.greetings_div h2 {
+  margin-top: 2%;
+}
+
+#gcard {
+  width: 600px;
+  height: 325px;
+}
+
+.call {
+  background-color: #1c0333;
+  width: 100%;
+  height: 350px;
+}
+
+.call h3 {
+  color: white;
+}
+
+.call h4 {
+  color: white;
+}
+.call label {
+  color: white;
+  text-align: left;
+}
+
+.call input {
+  width: 270px;
+  height: 25px;
+  border-color: #8863fb;
+  color: white;
+  background-color: #1c0333;
+}
+
+.call img {
+  margin-top: 20px;
+  height: 60px;
+  width: 90px;
+}
+.buttonCall {
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  margin-top: 12px;
+  background-color: #8863fb;
+  height: 40px;
+  width: 280px;
+}
