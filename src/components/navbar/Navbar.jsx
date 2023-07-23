@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -46,10 +46,49 @@ import {
 } from "@chakra-ui/icons";
 
 import "./navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const [AllDataArr, setAllDataArr] = useState([]);
+  const [searchData, setSearchData] = useState([]);
+
+  const getAllData = () => {
+    fetch(`http://localhost:6060/jewellery`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAllDataArr(data);
+      });
+  };
+
+  const handleSearch = (str) => {
+    console.log(str);
+    getAllData();
+    console.log(AllDataArr);
+    const rData = AllDataArr.filter((item) =>
+      item.link.toLowerCase().includes(str.toLowerCase())
+    );
+    console.log(rData);
+    setSearchData(rData.slice(0, 15));
+    if (!str) {
+      setSearchData([]);
+    }
+  };
+
+  const [str, setStr] = useState("");
+  function handleRing() {
+    setStr("Ring");
+    localStorage.setItem("product", JSON.stringify(str));
+  }
+
+  function handleBrac() {
+    setStr("Bracelet");
+    localStorage.setItem("product", JSON.stringify(str));
+  }
 
   return (
     <>
@@ -77,7 +116,9 @@ export default function Navbar() {
               w={{ base: "10rem", md: "15rem" }}
               fontSize={{ sm: "10px", md: "20px" }}>
               <ReactIcon mr={"8px"} fontSize={{ md: "35px" }} />
-              <Text>GOLDENSPARROW</Text>
+              <Link to={"/"}>
+                <Text>GOLDENSPARROW</Text>
+              </Link>
             </Box>
             <HStack
               as={"nav"}
@@ -108,6 +149,7 @@ export default function Navbar() {
                   <SearchIcon color="black" />
                 </InputRightElement>
                 <Input
+                  onChange={(el) => handleSearch(el.target.value)}
                   type="text"
                   placeholder="Search Here.."
                   bg={useColorModeValue("white", "#eee")}
@@ -185,19 +227,81 @@ export default function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ lg: "none" }}>
             <Stack as={"nav"} spacing={4}>
+              <InputGroup bg={"white"}>
+                <InputRightElement pointerEvents="none">
+                  <SearchIcon color="black" />
+                </InputRightElement>
+                <Input
+                  onChange={(el) => handleSearch(el.target.value)}
+                  type="text"
+                  placeholder="Search Here.."
+                />
+              </InputGroup>
               <ButtonGroup
                 variant={"unstyled"}
                 display={"flex"}
                 flexDirection={"column"}>
-                <Button color={"black"}>FREE TRY AT HOME</Button>
-                <Button color={"black"}>PLAN OF PURCHASE</Button>
-                <Button color={"black"}>DIGITAL GOLD</Button>
-                <Button color={"black"}>BEST SELLERS</Button>
-                <Button color={"black"}>RINGS</Button>
-                <Button color={"black"}>BRACELETS</Button>
-                <Button color={"black"}>CHAINS</Button>
-                <Button color={"black"}>EARRINGS</Button>
-                <Button color={"black"}>OTHER JWELLERY</Button>
+                <Spacer />
+                <Link>
+                  <Button as={Button} className="btn">
+                    FREE TRY AT HOME
+                  </Button>
+                </Link>
+                <Link>
+                  <Button as={Button} className="btn">
+                    PLAN OF PURCHASE
+                  </Button>
+                </Link>
+                <Link>
+                  <Button as={Button} className="btn">
+                    DIGITAL GOLD
+                  </Button>
+                </Link>
+
+                <Link to={"/jwellery/Bestseller"}>
+                  <Button as={Button} className="btn">
+                    BEST SELLERS
+                  </Button>
+                </Link>
+                <Link to={"/jwellery/Ring"}>
+                  <Button as={Button} className="btn" onClick={handleRing}>
+                    RINGS
+                  </Button>
+                </Link>
+                <Link to={"/jwellery/Bracelet"}>
+                  <Button as={Button} className="btn" onClick={handleBrac}>
+                    BRACELETS
+                  </Button>
+                </Link>
+                <Link to={`/jwellery/Earrings`}>
+                  <Button as={Button} className="btn">
+                    EARRINGS
+                  </Button>
+                </Link>
+                <Link to={"/jwellery/Chain"}>
+                  <Button className="btn">CHAINS</Button>
+                </Link>
+                <Link to={"/jwellery/Kada"}>
+                  <Button className="btn">KADA</Button>
+                </Link>
+                <Link to={"/jwellery/Haram"}>
+                  <Button>HARAM</Button>
+                </Link>
+                <Link to={"/jwellery/Jewellery Set"}>
+                  <Button>JEWELLERY SET</Button>
+                </Link>
+                <Link to={"/jwellery/Maang Tikka"}>
+                  <Button>MAANG TIKKA</Button>
+                </Link>
+                <Link to={"/jwellery/Mangal Sutra"}>
+                  <Button>MANGALSUTRAS</Button>
+                </Link>
+                <Link to={"/jwellery/Necklace"}>
+                  <Button>NECKLACES</Button>
+                </Link>
+                <Link to={"/jwellery/Pendant"}>
+                  <Button>PENDENT</Button>
+                </Link>
               </ButtonGroup>
             </Stack>
           </Box>
@@ -219,77 +323,88 @@ export default function Navbar() {
             mr={"10rem"}
             flexWrap={"wrap"}
             color={useColorModeValue("black", "white")}>
-            <Menu>
-              <MenuButton as={Button} className="btn">
+            <Link to={"/jwellery/Bestseller"}>
+              <Button as={Button} className="btn">
                 BEST SELLERS
-              </MenuButton>
-            </Menu>
-            <Menu>
-              <MenuButton as={Button} className="btn">
-                DIGITAL GOLD
-              </MenuButton>
-            </Menu>
-            <Menu>
-              <MenuButton as={Button} className="btn">
+              </Button>
+            </Link>
+
+            <Link to={"/jwellery/Ring"}>
+              <Button as={Button} className="btn" onClick={handleRing}>
                 RINGS
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton as={Button} className="btn">
+              </Button>
+            </Link>
+
+            <Link to={"/jwellery/Bracelet"}>
+              <Button as={Button} className="btn" onClick={handleBrac}>
                 BRACELETS
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton as={Button} className="btn">
+              </Button>
+            </Link>
+            <Link to={`/jwellery/Earrings`}>
+              <Button as={Button} className="btn">
                 EARRINGS
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton as={Button} className="btn">
-                CHAINS
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
-              </MenuList>
-            </Menu>
+              </Button>
+            </Link>
+            <Link to={"/jwellery/Chain"}>
+              <Button className="btn">CHAINS</Button>
+            </Link>
+            <Link to={"/jwellery/Kada"}>
+              <Button className="btn">KADA</Button>
+            </Link>
             <Menu>
               <MenuButton as={Button} className="btn">
                 OTHER JWELLERY
               </MenuButton>
               <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Haram"}>
+                    <Button>HARAM</Button>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Jewellery Set"}>
+                    <Button>JEWELLERY SET</Button>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Maang Tikka"}>
+                    <Button>MAANG TIKKA</Button>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Mangal Sutra"}>
+                    <Button>MANGALSUTRAS</Button>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Necklace"}>
+                    <Button>NECKLACES</Button>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/jwellery/Pendant"}>
+                    <Button>PENDENT</Button>
+                  </Link>
+                </MenuItem>
               </MenuList>
             </Menu>
           </ButtonGroup>
+        </Box>
+        <Box
+          pt={"1%"}
+          pl={"1%"}
+          fontSize={"17px"}
+          textTransform={"capitalize"}
+          fontWeight={"700"}
+          boxShadow={"xl"}>
+          {searchData.map((el) => {
+            return (
+              <Text pb={"0.6%"}>
+                <SearchIcon pr={"0.4%"} />
+                {el.link}
+              </Text>
+            );
+          })}
         </Box>
       </Box>
     </>

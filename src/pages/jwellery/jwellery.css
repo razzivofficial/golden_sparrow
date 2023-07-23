@@ -1,0 +1,28 @@
+.card_div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 2%;
+}
+
+@media screen and (max-width: 1200px) {
+  .card_div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .card_div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .card_div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 2%;
+  }
+}
