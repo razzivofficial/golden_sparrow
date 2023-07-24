@@ -6,12 +6,10 @@ export default function Details() {
     <div>
       <div id="gparent_div">
         <div id="parent_div1">
-          <div>
-            <img
-              src="https://cdnss.caratlane.us/e1597c3d-5e7c-4b01-a191-bfcbe1827055/https://cdn.caratlane.us/media/catalog/product/j/n/jne04613-yb3a-p0p000000-00-14kt-yellow-gold-necklace-main-image.jpg/w_615,h_615,r_contain"
-              alt="Necklase"
-            />
-          </div>
+          <img
+            src="https://cdnss.caratlane.us/e1597c3d-5e7c-4b01-a191-bfcbe1827055/https://cdn.caratlane.us/media/catalog/product/j/n/jne04613-yb3a-p0p000000-00-14kt-yellow-gold-necklace-main-image.jpg/w_615,h_615,r_contain"
+            alt="Necklase"
+          />
         </div>
         <div id="parent_div2">
           <div id="child_div1">
@@ -99,7 +97,7 @@ export default function Details() {
           <span>
             <h5>Credit and Financing</h5>
             <p>
-              Jewelry purchases should never be stressful. That's why we offer
+              Jewelry purchases should never be stressful.That's why we offer
               several ways to pay.
             </p>
           </span>
@@ -142,7 +140,7 @@ export default function Details() {
             alt="sixth"
           />
           <span>
-            <h5>Connect With US</h5>
+            <h5>Connect With Us</h5>
             <p>Our jewelry experts can help answer all your questions.</p>
           </span>
         </div>
@@ -153,9 +151,13 @@ export default function Details() {
           <h2>Make it memorable!</h2>
           <h3>
             Write a heartfelt, handwritten message to your loved one and make
-            their gift extra special. We will send your message along with your
-            CaratLane Jewelry, adding a delightful element of surprise!
+            their gift extra special. <br /> We will send your message along
+            with your CaratLane Jewelry, <br />
+            adding a delightful element of surprise!
           </h3>
+          <h4 className="commitment">
+            Pure Quality. Perfect Craftsmanship. Pleased Customers.
+          </h4>
         </div>
         <div>
           <img
@@ -187,6 +189,20 @@ export default function Details() {
           <br />
           <button class="buttonCall">Request Call Back</button>
         </form>
+      </div>
+      <br />
+      <div className="trust">
+        <img
+          src="https://cdnss.caratlane.us/e1597c3d-5e7c-4b01-a191-bfcbe1827055/https://cdn.caratlane.us/media/wysiwyg/trust-tanishq.png"
+          alt="image"
+        />
+        <h4>
+          The highest quality of craftsmanship and innovation, <br /> that
+          brings you modern, everyday designs.
+        </h4>
+        <a href="https://www.caratlane.com/tanishq-caratlane-partnership">
+          <button className="knowmore">Know More</button>
+        </a>
       </div>
     </div>
   );
