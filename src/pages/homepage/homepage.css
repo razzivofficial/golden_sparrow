@@ -1,0 +1,69 @@
+.parentPic {
+  width: 100%;
+  height: auto;
+  padding: 1% 1%;
+}
+.parentPic h2 {
+  text-align: center;
+  color: black;
+  font-size: x-large;
+  font-weight: 700;
+  font-style: italic;
+  font-family: system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.bar {
+  position: relative;
+  width: 100%;
+  padding: 1.2% 0%;
+  background-color: #e527d5;
+  color: white;
+  font-family: Gelasio;
+  font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bar_content {
+  display: inline-block;
+  animation: move 20s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.bg-opacity,
+img {
+  position: relative;
+  /* background-color: #000; */
+}
+.bg-opacity::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.7;
+  background: url("../../components/resources/bg1.jpg");
+  background-size: cover;
+}
+.parentPic,
+img {
+  padding: 0.5% 0.5%;
+}
+.parentPic img:hover {
+  transform: scale(1.2);
+}
+
+
