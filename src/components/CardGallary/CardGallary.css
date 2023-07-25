@@ -69,7 +69,7 @@ h1 {
   color: #fff;
   grid-column-start: auto;
   grid-row-start: auto;
-  background: url("https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+  background: url("https://c.ndtvimg.com/2022-09/r9saa6k_jewellery-650_625x300_26_September_22.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
@@ -78,16 +78,16 @@ h1 {
   counter-increment: item-counter;
 }
 .item:nth-of-type(3n) {
-  background-image: url("https://images.unsplash.com/photo-1422255198496-21531f12a6e8?dpr=2&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=");
+  background-image: url("https://rukminim1.flixcart.com/image/850/1000/xif0q/nose-ring-stud/1/z/5/small-delicate-nathitya-nose-pin-nose-stud-shecario-original-imagg56hgjzgtqqv.jpeg?q=90");
 }
 .item:nth-of-type(4n) {
-  background-image: url("https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?dpr=2&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=");
+  background-image: url("https://images.unsplash.com/photo-1626784215013-13322cb0e471?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z29sZCUyMGpld2VsbGVyeXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80");
 }
 .item:nth-of-type(5n) {
-  background-image: url("https://images.unsplash.com/photo-1476097297040-79e9e1603142?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+  background-image: url("https://i.pinimg.com/originals/e6/85/d5/e685d5100f680666552f648b16c5e5b9.jpg");
 }
 .item:nth-of-type(6n) {
-  background-image: url("https://images.unsplash.com/photo-1464652149449-f3b8538144aa?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+  background-image: url("https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
 }
 .item:after {
   content: "";
@@ -137,4 +137,47 @@ h1 {
   font-size: 1.1rem;
   padding-right: 0.5em;
   color: #444;
+}
+
+.bkg-opacity,
+img {
+  position: relative;
+  /* background-color: #000; */
+}
+.bkg-opacity::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.7;
+  background: url("https://images.mid-day.com/images/images/2022/oct/golds-twnety-four-oct_d.jpg");
+  background-size: cover;
+}
+
+.seven h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  color: #222;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+.seven h1:after,
+.seven h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 1px solid #c50000;
+  border-top: 1px solid #c50000;
+  height: 5px;
+  background-color: #f8f8f8;
 }

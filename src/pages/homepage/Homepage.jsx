@@ -30,12 +30,12 @@ export default function Homepage() {
         </div>
         <div class="six">
           <h1>
-            Style Six Heading
-            <span>Example Tagline Text</span>
+            TOP COLLECTION
+            <span>Elevate Your Elegance with Timeless Treasures</span>
           </h1>
         </div>
         <div class="bg-opacity" src={bg}>
-          <div className="cardSliderCss">
+          <div>
             <Cardslider />
           </div>
           <br />
@@ -46,8 +46,8 @@ export default function Homepage() {
             <Image boxSize="32.5%" objectFit="cover" src={Jel3} alt="error" />
           </div>
         </div>
-        <div>
-          <h1>Sales Countdown</h1>
+        <div class="ten">
+          <h1>Sparkling Deals Await! Don't Miss Out - Time is Ticking!</h1>
           <CountdownTimer targetDate={dateTimeAfterThreeDays} />
         </div>
         <div className="promo">
@@ -55,9 +55,6 @@ export default function Homepage() {
         </div>
         <CardGallery />
       </div>
-
-      
-      
     </>
   );
 }
