@@ -1,19 +1,29 @@
 export const sliderData = [
   {
-    image:
-      "https://wallpapers.com/images/hd/aesthetic-indian-woman-wearing-gold-jewelry-glvsb0iilu4xxz5z.jpg",
+    image: "https://wallpapercave.com/dwp2x/wp11043111.jpg",
     heading: "Slide One",
     desc: "This is the description of slide one Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
   },
   {
-    image:
-      "https://i.pinimg.com/originals/d8/e8/42/d8e84217563746154bed394c70ab24b8.jpg",
+    image: "https://wallpapercave.com/dwp2x/wp11043086.jpg",
     heading: "Slide Two",
     desc: "This is the description of slide two Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
   },
   {
     image:
-      "https://w.forfun.com/fetch/11/117d5517d03199e18bea1425162d5ff9.jpeg",
+      "https://w0.peakpx.com/wallpaper/165/472/HD-wallpaper-esha-gupta-portrait-beautiful-woman-indian-jewelry-indian-actress.jpg",
+    heading: "Slide Three",
+    desc: "This is the description of slide three Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
+  },
+
+  {
+    image: "https://wallpapercave.com/dwp2x/wp8302412.jpg",
+    heading: "Slide Three",
+    desc: "This is the description of slide three Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
+  },
+  {
+    image:
+      "https://w0.peakpx.com/wallpaper/844/314/HD-wallpaper-girls-indian-makeup-beautiful-girl-indian-jewelry.jpg",
     heading: "Slide Three",
     desc: "This is the description of slide three Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
   },

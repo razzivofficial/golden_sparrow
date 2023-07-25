@@ -1,10 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 import AllRoutes from "./AllRoute";
+import Details from "./pages/details/Details";
+
 function App() {
   return (
     <>
       <AllRoutes />
+      {/* <Details /> */}
     </>
   );
 }

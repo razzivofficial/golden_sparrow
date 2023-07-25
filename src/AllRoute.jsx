@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Jwellery from "./pages/jwellery/Jwellery";
-import { Homepage } from "./pages/homepage/Homepage";
-import Search from "./pages/search/Search";
+import Homepage from "./pages/homepage/Homepage";
 
 function AllRoutes() {
   return (

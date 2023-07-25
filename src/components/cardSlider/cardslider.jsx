@@ -36,7 +36,7 @@ function CardSlider() {
       content: (
         <Card
           imagen={bangle}
-          title="Bangles"
+          title="Bangle"
           subtitle="Wrap your wrists in splendor with our bangles, each one a timeless piece of art that complements your every move"
         />
       ),
@@ -46,7 +46,7 @@ function CardSlider() {
       content: (
         <Card
           imagen={bracs}
-          title="Bracelets"
+          title="Bracelet"
           subtitle="Celebrate life's precious moments with our bracelets, a symphony of fine craftsmanship and exquisite design"
         />
       ),

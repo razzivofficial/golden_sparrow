@@ -115,7 +115,8 @@ export default function Navbar() {
             <Box
               display={"flex"}
               w={{ base: "10rem", md: "15rem" }}
-              fontSize={{ sm: "10px", md: "20px" }}>
+              fontSize={{ sm: "10px", md: "20px" }}
+              mt={"1%"}>
               <ReactIcon mr={"8px"} fontSize={{ md: "35px" }} />
               <Link to={"/"}>
                 <Text>GOLDENSPARROW</Text>
