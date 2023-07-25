@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import Button from "./Button";
 
-function Cardcompo({ imagen }) {
+function Cardcompo({ imagen,title,subtitle }) {
   const [show, setShown] = useState(false);
 
   const props3 = useSpring({
@@ -20,15 +20,11 @@ function Cardcompo({ imagen }) {
       onMouseLeave={() => setShown(false)}
     >
       <img src={imagen} alt="" />
-      <h2>Title</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-        volutpat.
-      </p>
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
       <div className={Styles.btnn}>
-        <Button text="Demo" />
-        <Button text="Code" />
+        <Button text="View More" />
+        {/* <Button text="More" /> */}
       </div>
     </animated.div>
   );

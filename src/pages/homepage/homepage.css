@@ -18,7 +18,7 @@
   padding: 1.2% 0%;
   background-color: #e527d5;
   color: white;
-  font-family: Gelasio;
+  font-family: "Courier New", Courier, monospace;
   font-size: 18px;
   overflow: hidden;
   white-space: nowrap;
@@ -27,7 +27,7 @@
 
 .bar_content {
   display: inline-block;
-  animation: move 20s linear infinite;
+  animation: move 30s linear infinite;
   animation-fill-mode: forwards;
 }
 
@@ -63,7 +63,17 @@ img {
   padding: 0.5% 0.5%;
 }
 .parentPic img:hover {
+  transition: 500ms;
   transform: scale(1.2);
 }
 
-
+.promo video {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2% 1%;
+  border-color: #e527d5;
+  border-radius: 3rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}

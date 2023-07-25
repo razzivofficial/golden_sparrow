@@ -1,14 +1,26 @@
-.App {
+.CardSlider {
   font-family: sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-left: 60%;
 }
-.App {
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens */
+@media screen and (max-width: 768px) {
+  .CardSlider {
+    width: 100%;
+    margin-left: 30%;
+  }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 480px) {
+  .CardSlider {
+    width: 100%;
+    margin-left: 0%;
+  }
 }
