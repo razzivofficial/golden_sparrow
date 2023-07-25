@@ -9,7 +9,9 @@ import {
     Button,
     Center,
     Flex,
-    IconButton
+    IconButton,
+    Tag,
+    HStack
   } from "@chakra-ui/react";
   import { FiHeart } from 'react-icons/fi';
   import { FcLike } from 'react-icons/fc';
@@ -23,6 +25,11 @@ import {
     };
     return(
         <Card maxW='sm' m={"3%"} p={"1%"} border={"1px solid black"} >
+          {/* Tag starts */}
+          <HStack>
+          <Tag size='md' key='md' variant='solid' colorScheme='yellow'>BESTSELLER</Tag>
+          </HStack>
+          {/* Tag ends */}
           <Flex justifyContent={"flex-end"}>
                <IconButton
                   isRound={true}

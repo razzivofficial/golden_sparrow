@@ -1,0 +1,16 @@
+#title{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20vh; 
+      /* margin: 0; */
+    font-family:'Times New Roman', Times, serif;
+    /* text-align: center; */
+    font-size: xx-large;
+    font-weight:bolder;
+    background-image: linear-gradient(to right, rgb(222, 87, 229), rgb(136, 99, 251));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* linear-gradient(90deg, rgba(228, 126, 230, 1) 0%, rgba(228, 29, 253, 1) 50%, rgba(148, 69, 252, 1) 100%); */
+}

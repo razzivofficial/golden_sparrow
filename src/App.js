@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Pcard from './components/card/Card';
+import PCard from './components/card/Card';
+import SignUp from './pages/signup/Signup';
+import SignIn from './pages/signin/Signin';
 
 function App() {
     return(
-      <Pcard></Pcard>
-    )
-}
-
-
+      <SignUp></SignUp>
+    )};
 export default App;
