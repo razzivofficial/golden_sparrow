@@ -28,14 +28,19 @@ export default function Homepage() {
             style with timeless beauty now!
           </span>
         </div>
-
+        <div class="six">
+          <h1>
+            Style Six Heading
+            <span>Example Tagline Text</span>
+          </h1>
+        </div>
         <div class="bg-opacity" src={bg}>
           <div className="cardSliderCss">
             <Cardslider />
           </div>
           <br />
+
           <div direction="row">
-            <h2>TOP TRENDING</h2>
             <Image boxSize="32.5%" objectFit="cover" src={Jel1} alt="error" />
             <Image boxSize="35%" objectFit="cover" src={Jel2} alt="error" />
             <Image boxSize="32.5%" objectFit="cover" src={Jel3} alt="error" />
@@ -48,8 +53,11 @@ export default function Homepage() {
         <div className="promo">
           <video src={expVid} autoPlay muted></video>
         </div>
-        <CardGallery/>
+        <CardGallery />
       </div>
+
+      
+      
     </>
   );
 }
