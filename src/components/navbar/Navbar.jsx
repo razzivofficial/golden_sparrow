@@ -33,6 +33,7 @@ import { LiaStoreAltSolid } from "react-icons/lia";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { AiOutlineGold } from "react-icons/ai";
 import { BsHandbagFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 import {
   HamburgerIcon,
@@ -46,7 +47,6 @@ import {
 } from "@chakra-ui/icons";
 
 import "./navbar.css";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -55,6 +55,7 @@ export default function Navbar() {
   const [AllDataArr, setAllDataArr] = useState([]);
   const [searchData, setSearchData] = useState([]);
 
+  const navigate = useNavigate();
   const getAllData = () => {
     fetch(`http://localhost:6060/jewellery`, {
       method: "GET",
@@ -240,7 +241,8 @@ export default function Navbar() {
               <ButtonGroup
                 variant={"unstyled"}
                 display={"flex"}
-                flexDirection={"column"}>
+                flexDirection={"column"}
+                onClick={isOpen ? onClose : onOpen}>
                 <Spacer />
                 <Link>
                   <Button as={Button} className="btn">
@@ -261,6 +263,11 @@ export default function Navbar() {
                 <Link to={"/jwellery/Bestseller"}>
                   <Button as={Button} className="btn">
                     BEST SELLERS
+                  </Button>
+                </Link>
+                <Link to={"/jwellery/Bangle"}>
+                  <Button as={Button} className="btn">
+                    Bangle
                   </Button>
                 </Link>
                 <Link to={"/jwellery/Ring"}>
@@ -293,7 +300,7 @@ export default function Navbar() {
                 <Link to={"/jwellery/Maang Tikka"}>
                   <Button>MAANG TIKKA</Button>
                 </Link>
-                <Link to={"/jwellery/Mangal Sutra"}>
+                <Link to={"/jwellery/Mangalsutra"}>
                   <Button>MANGALSUTRAS</Button>
                 </Link>
                 <Link to={"/jwellery/Necklace"}>
@@ -328,7 +335,11 @@ export default function Navbar() {
                 BEST SELLERS
               </Button>
             </Link>
-
+            <Link to={"/jwellery/Bangle"}>
+              <Button as={Button} className="btn">
+                BANGLE
+              </Button>
+            </Link>
             <Link to={"/jwellery/Ring"}>
               <Button as={Button} className="btn" onClick={handleRing}>
                 RINGS
@@ -372,7 +383,7 @@ export default function Navbar() {
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link to={"/jwellery/Mangal Sutra"}>
+                  <Link to={"/jwellery/Mangalsutra"}>
                     <Button>MANGALSUTRAS</Button>
                   </Link>
                 </MenuItem>
