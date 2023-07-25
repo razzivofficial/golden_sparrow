@@ -1,49 +1,60 @@
 import React from "react";
 import "./homepage.css";
-import { useEffect, useState } from "react";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Cardslider from "../../components/cardSlider/cardslider";
+import Slider from "../../components/slider/Slider";
+import CountdownTimer from "../../components/CountdownTimer/CountdownTimer";
+import Jel1 from "../../components/resources/1.jpg";
+import Jel2 from "../../components/resources/2.jpg";
+import Jel3 from "../../components/resources/3.webp";
+import bg from "../../components/resources/bg1.jpg";
+import expVid from "../../components/resources/expVid.mp4";
+import CardGallery from "../../components/CardGallary/CardGallary";
+import { Image } from "@chakra-ui/react";
 
-export const Homepage = () => {
+const SALES_TIMER = 3 * 24 * 60 * 60 * 1000;
+const NOW_IN_MS = new Date().getTime();
+
+const dateTimeAfterThreeDays = NOW_IN_MS + SALES_TIMER;
+
+export default function Homepage() {
   return (
     <>
-      <Navbar />
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
-        ab! Nihil enim numquam doloremque saepe neque non totam, aliquam quia
-        sequi natus, veritatis, quisquam nesciunt repellat fugiat reiciendis
-        cupiditate iste. Lorem ipsum dolor, sit amet consectetur adipisicing
-        elit. Quia voluptates itaque molestiae nesciunt harum, accusamus ducimus
-        quis deserunt quas fugiat doloribus provident nobis doloremque enim,
-        quam suscipit dolor voluptatem nam aliquam consequuntur eligendi
-        corrupti dignissimos! Saepe exercitationem eligendi quis provident nemo
-        consectetur qui, aperiam voluptas, molestiae omnis, pariatur
-        consequuntur quaerat. Architecto culpa omnis praesentium autem voluptate
-        dolorem libero unde similique. Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Maiores corrupti aut eaque officiis ducimus! Earum
-        nihil totam assumenda perferendis, veniam tenetur iure quis dolores
-        officia quo inventore, ut quia sapiente provident. Reprehenderit
-        aspernatur dolorum optio nemo velit consectetur odit illum, repudiandae
-        laboriosam et officia dolores labore, ipsum quae amet, doloremque
-        voluptatum accusamus esse fugiat quidem dignissimos quisquam a facere.
-        Voluptates odio culpa ullam quam maiores sunt dolorem eveniet non
-        officiis, aut, qui laboriosam accusantium ex vero, quasi ipsam!
-        Molestias esse, vel alias quisquam distinctio dolores veritatis unde
-        veniam provident consectetur id harum ratione repellat tempora magnam
-        voluptas odit incidunt quis quam laboriosam. Neque eius nam laborum
-        corrupti ipsa modi accusantium corporis consequatur, ullam assumenda
-        tenetur suscipit et dolores impedit aut repellendus vel asperiores
-        voluptates excepturi optio ex cupiditate? At delectus corporis eum
-        soluta impedit culpa voluptate nihil deserunt, eveniet voluptatum non,
-        doloremque tenetur, autem laboriosam tempora alias sapiente odio iure
-        quod totam dolores itaque! Animi repellat consequatur voluptatum ab!
-        Nobis ratione consectetur nostrum voluptates porro possimus, in ducimus
-        aliquam laboriosam quam velit culpa nemo, odit hic, nihil esse et
-        consequuntur voluptatibus. Repellat sint laborum earum sit unde, id
-        beatae, quae soluta est harum quas eaque ad repellendus dignissimos
-        voluptatum blanditiis!
+      <Slider />
+      <div className="parentPic">
+        <div class="bar">
+          <span class="bar_content">
+            Unlock the magic of our exquisite jewelry collection today! Enjoy
+            15% off your first purchase with promo code GEM15. Elevate your
+            style with timeless beauty now!
+          </span>
+        </div>
+        <div class="six">
+          <h1>
+            TOP COLLECTION
+            <span>Elevate Your Elegance with Timeless Treasures</span>
+          </h1>
+        </div>
+        <div class="bg-opacity" src={bg}>
+          <div>
+            <Cardslider />
+          </div>
+          <br />
+
+          <div direction="row">
+            <Image boxSize="32.5%" objectFit="cover" src={Jel1} alt="error" />
+            <Image boxSize="35%" objectFit="cover" src={Jel2} alt="error" />
+            <Image boxSize="32.5%" objectFit="cover" src={Jel3} alt="error" />
+          </div>
+        </div>
+        <div class="ten">
+          <h1>Sparkling Deals Await! Don't Miss Out - Time is Ticking!</h1>
+          <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+        </div>
+        <div className="promo">
+          <video src={expVid} autoPlay muted></video>
+        </div>
+        <CardGallery />
       </div>
-      <Footer />
     </>
   );
-};
+}
