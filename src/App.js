@@ -1,11 +1,12 @@
 // import logo from "./logo.svg";
 import "./App.css";
-// import SignUp from "./pages/signup/Signup";
-import Homepage from "./pages/homepage/Homepage";
+import SignIn from "./pages/signin/Signin";
+import SignUp from "./pages/signup/Signup";
+// import Homepage from "./pages/homepage/Homepage";
 function App() {
   return (
     <>
-      <Homepage/>
+      <SignIn />
     </>
   );
 }
