@@ -5,14 +5,13 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBBtn,
   MDBIcon,
   MDBTypography,
   MDBTable,
   MDBTableHead,
   MDBTableBody,
 } from "mdb-react-ui-kit";
-
+import { Button, ChakraProvider } from "@chakra-ui/react";
 export default function Invoice() {
   return (
     <MDBContainer className="py-5">
@@ -26,27 +25,11 @@ export default function Invoice() {
                 </p>
               </MDBCol>
               <MDBCol xl="3" className="float-end">
-                <MDBBtn
-                  color="light"
-                  ripple="dark"
-                  className="text-capitalize border-0"
-                >
-                  <MDBIcon fas icon="print" color="primary" className="me-1" />
-                  Print
-                </MDBBtn>
-                <MDBBtn
-                  color="light"
-                  ripple="dark"
-                  className="text-capitalize border-0 ms-2"
-                >
-                  <MDBIcon
-                    far
-                    icon="file-pdf"
-                    color="danger"
-                    className="me-1"
-                  />
-                  Export
-                </MDBBtn>
+                <ChakraProvider>
+                  <Button colorScheme="red" variant="outline">
+                    Print
+                  </Button>
+                </ChakraProvider>
                 <hr />
               </MDBCol>
             </MDBRow>
@@ -164,12 +147,11 @@ export default function Invoice() {
               <p>Thank you for your purchase</p>
             </MDBCol>
             <MDBCol xl="2">
-              <MDBBtn
-                className="text-capitalize"
-                style={{ backgroundColor: "#60bdf3" }}
-              >
-                Pay Now
-              </MDBBtn>
+              <ChakraProvider>
+                <Button colorScheme="blue" variant="solid">
+                  Print
+                </Button>
+              </ChakraProvider>
             </MDBCol>
           </MDBRow>
         </MDBCardBody>
