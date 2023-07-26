@@ -20,6 +20,10 @@
   margin-left: 5%;
   margin-top: 5%;
 }
+.catagory_btn:hover {
+  transition: 300ms;
+  transform: scale(1.08);
+}
 @media screen and (max-width: 1200px) {
   .card_div {
     display: grid;

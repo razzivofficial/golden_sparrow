@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "mobile": "1783762846",
+      "email": "xyz@gmail.com",
+      "fname": "f",
+      "lname": "sahu",
+      "password": "123456",
+      "cpassword": "123456",
+      "gender": "Female",
+      "id": 1
+    }
+  ],
   "jewellery": [
     {
       "image": "https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dwd3fdb3e2/images/hi-res/50D3FFVAR1A10_1.jpg?sw=360&sh=360",

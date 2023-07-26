@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../resources/logo.png";
 import {
   Box,
   Flex,
@@ -47,6 +48,7 @@ import {
 } from "@chakra-ui/icons";
 
 import "./navbar.css";
+import { Image } from "@chakra-ui/react";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,6 +56,12 @@ export default function Navbar() {
 
   const [AllDataArr, setAllDataArr] = useState([]);
   const [searchData, setSearchData] = useState([]);
+
+  const handlePara = (id) => {
+    console.log(id);
+    navigate(`/details/${id}`);
+    setSearchData([]);
+  };
 
   const navigate = useNavigate();
   const getAllData = () => {
@@ -74,7 +82,7 @@ export default function Navbar() {
       item.link.toLowerCase().includes(str.toLowerCase())
     );
     console.log(rData);
-    setSearchData(rData.slice(0, 15));
+    setSearchData(rData.slice(0, 10));
     if (!str) {
       setSearchData([]);
     }
@@ -119,7 +127,7 @@ export default function Navbar() {
               mt={"1%"}>
               <ReactIcon mr={"8px"} fontSize={{ md: "35px" }} />
               <Link to={"/"}>
-                <Text>GOLDENSPARROW</Text>
+                <Image src={logo}></Image>
               </Link>
             </Box>
             <HStack
@@ -411,7 +419,7 @@ export default function Navbar() {
           boxShadow={"xl"}>
           {searchData.map((el) => {
             return (
-              <Text pb={"0.6%"}>
+              <Text pb={"0.6%"} onClick={() => handlePara(el.id)}>
                 <SearchIcon pr={"0.4%"} />
                 {el.link}
               </Text>

@@ -8,8 +8,10 @@ import {
   Flex,
   Tag,
   useColorModeValue,
+  Image,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import bigLogo from "../resources/bigLogo.png";
 
 const ListHeader = ({ children }) => {
   return (
@@ -71,7 +73,7 @@ export default function Footer() {
           </Stack>
         </SimpleGrid>
       </Container>
-      <Box py={10}>
+      <Box py={0}>
         <Flex
           align={"center"}
           _before={{
@@ -88,9 +90,9 @@ export default function Footer() {
             flexGrow: 1,
             ml: 8,
           }}>
-          GOLDENSPARROW
+          <Image src={bigLogo} w={"30%"} p={0}></Image>
         </Flex>
-        <Text pt={6} fontSize={"sm"} textAlign={"center"}>
+        <Text pt={0} fontSize={"sm"} textAlign={"center"}>
           © 2022 Chakra Templates. All rights reserved
         </Text>
       </Box>

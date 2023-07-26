@@ -18,6 +18,7 @@ import {
 import { FiHeart } from "react-icons/fi";
 import { FcLike } from "react-icons/fc";
 import "./card.css";
+import { useNavigate } from "react-router-dom";
 
 // Create a custom theme with dark mode enabled
 const theme = extendTheme({
@@ -27,12 +28,16 @@ const theme = extendTheme({
   },
 });
 
-const PCard = ({ image, link, product, value }) => {
+const PCard = ({ image, link, product, value, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { colorMode } = useColorMode(); // Get the current color mode (light or dark)
+  const navigate = useNavigate();
 
   const handleWishlistClick = () => {
     setIsFavorite((prevState) => !prevState);
+  };
+  const handleClick = () => {
+    navigate(`/details/${id}`);
   };
 
   return (
@@ -78,7 +83,10 @@ const PCard = ({ image, link, product, value }) => {
         </Stack>
       </CardBody>
       <ButtonGroup spacing="3" m="auto" size="sm" pb={"1%"}>
-        <Button variant="outline" colorScheme="purple">
+        <Button
+          variant="outline"
+          colorScheme="purple"
+          onClick={() => handleClick()}>
           Show Details
         </Button>
         <Button variant="outline" colorScheme="purple">

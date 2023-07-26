@@ -70,12 +70,13 @@ const Jwellery = () => {
 
   const sortByCatagory = ["All Products", "Men", "Women", "Kids", "Unisex"];
 
-  const getData = () => {
-    fetch(`http://localhost:6060/jewellery`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
+  const getData = async () => {
+    try {
+      const res = await fetch(`http://localhost:6060/jewellery`, {
+        method: "GET",
+      });
+      if (res.ok) {
+        const data = await res.json();
         console.log(data);
         const odata = data.filter((el) => {
           return el.product === type.type;
@@ -87,7 +88,13 @@ const Jwellery = () => {
         const end = page * 6;
         const newData = odata.slice(start, end);
         setPageArr(newData);
-      });
+      } else {
+        const err = await res.json();
+        throw new Error(err);
+      }
+    } catch (error) {
+      console.log("Error!!!");
+    }
   };
 
   const getImage = () => {
@@ -147,19 +154,16 @@ const Jwellery = () => {
   return (
     <>
       <Navbar />
+
       <Image src={imageSource}></Image>
 
-      <Grid templateColumns="20% 78%" gap={2}>
-        <GridItem mt={"2%"} ml={"3%"}>
-          <Text mt={"10%"} ml={"5%"}>
-            GOLDENSPARROW <b>{type.type}s </b>{" "}
-            <span>
-              {showArr.length}
-              {"  "}
-            </span>
-            Designs
-          </Text>
-
+      <Grid
+        templateColumns={{ base: "100% 0%", md: "100% 0%", lg: "25% 75%" }}
+        gap={2}>
+        <GridItem
+          mt={"2%"}
+          ml={"3%"}
+          display={{ base: "none", md: "none", lg: "grid" }}>
           <Box mt={"10%"} mb={"15%"}>
             <Box mt={"20%"} bg={"#b577d1"} borderRadius={"0.3rem"} mb={"15%"}>
               <Text textAlign={"center"} fontSize={"30px"} fontWeight={"800"}>
@@ -185,7 +189,9 @@ const Jwellery = () => {
                   <Spacer />
                   {sortByCatagory.map((el) => {
                     return (
-                      <Button onClick={() => handleSortByCatagory(el)}>
+                      <Button
+                        className="catagory_btn"
+                        onClick={() => handleSortByCatagory(el)}>
                         {el}
                       </Button>
                     );
@@ -243,6 +249,19 @@ const Jwellery = () => {
           </Box>
         </GridItem>
         <GridItem>
+          <Text
+            mt={"2%"}
+            ml={"2%"}
+            fontSize={{ base: "1rem", ms: "1.2", lg: "1.3" }}
+            display={"flex"}
+            gap={1}>
+            GOLDENSPARROW <b> {type.type}s </b>{" "}
+            <span>
+              {showArr.length}
+              {"  "}
+            </span>
+            Designs
+          </Text>
           {console.log(pageArr)}
           <div className="card_div">
             {showArr.length > 0 &&
@@ -253,36 +272,92 @@ const Jwellery = () => {
                     link={el.link}
                     value={el.value}
                     product={el.product}
+                    id={el.id}
                   />
                 );
               })}
           </div>
           {showArr.length === 0 && (
-            <Box display={"flex"} justifyContent={"center"} mt={"20%"}>
-              <Image src=""></Image>
+            <Box mt={"5%"} ml={"10%"}>
+              <Image
+                src="https://media1.giphy.com/media/JPJ2NlxNWrOkqHEiWk/giphy.gif?cid=ecf05e47hon9r4d8qvownhkkzist8lcj5xomnuaj0ndi3oal&ep=v1_gifs_related&rid=giphy.gif&ct=s"
+                ml={{ lg: "15%" }}></Image>
               <Text fontSize={"30px"} fontWeight={"500"}>
                 Sorry !!! We currently have no Products under this Catagory (:
               </Text>
             </Box>
           )}
-          <ButtonGroup
-            variant="outline"
-            p={"0.2%"}
-            display={"flex"}
-            justifyContent={"center"}
-            mb={"1%"}>
-            {showAllData === true &&
-              pageButtons.map((el) => {
-                return (
-                  <Button colorScheme="purple" onClick={() => handlePage(el)}>
-                    {el}
-                  </Button>
-                );
-              })}
-          </ButtonGroup>
         </GridItem>
       </Grid>
+      <ButtonGroup
+        variant="outline"
+        p={"0.2%"}
+        display={"flex"}
+        justifyContent={"center"}
+        mb={"1%"}
+        flexWrap={"wrap"}>
+        {showAllData === true &&
+          pageButtons.map((el) => {
+            return (
+              <Button colorScheme="purple" onClick={() => handlePage(el)}>
+                {el}
+              </Button>
+            );
+          })}
+      </ButtonGroup>
 
+      <Box
+        display={{ base: "flex", md: "flex", lg: "none" }}
+        justifyContent={"center"}
+        position={"fixed"}
+        bottom={0}
+        width={"100vw"}
+        bg={"#eddff0"}
+        gap={10}
+        color={"black"}>
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+            variant={"unstyled"}>
+            Sort By Catagory
+          </MenuButton>
+          <MenuList>
+            {sortByCatagory.map((el) => {
+              return (
+                <MenuItem
+                  as={"button"}
+                  className="catagory_btn"
+                  onClick={() => handleSortByCatagory(el)}>
+                  {el}
+                </MenuItem>
+              );
+            })}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+            variant={"unstyled"}>
+            Sort By Price
+          </MenuButton>
+          <MenuList minWidth="240px">
+            <MenuItem
+              value="asc"
+              as={"button"}
+              onClick={() => handleSort("asc")}>
+              Low to High
+            </MenuItem>
+            <MenuItem
+              value="desc"
+              as={"button"}
+              onClick={() => handleSort("desc")}>
+              High to Low
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Box>
       <Footer />
     </>
   );
