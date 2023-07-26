@@ -1,1 +1,14 @@
-{}
+{
+  "users": [
+    {
+      "mobile": "08926194183",
+      "email": "mail2sahooantaryami@gmail.com",
+      "fname": "Antaryami",
+      "lname": "Sahoo",
+      "password": "12345",
+      "cpassword": "12345",
+      "gender": "Male",
+      "id": 1
+    }
+  ]
+}
