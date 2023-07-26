@@ -9,6 +9,16 @@
       "cpassword": "12345",
       "gender": "Male",
       "id": 1
+    },
+    {
+      "mobile": "07884838884",
+      "email": "cse.21bcsd41@silicon.ac.in",
+      "fname": "Sahoo",
+      "lname": "Diptiranjan",
+      "password": "45678",
+      "cpassword": "45678",
+      "gender": "Male",
+      "id": 2
     }
   ]
 }

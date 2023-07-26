@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import gif1 from "../../components/resources/gif8.gif";
 import gif2 from "../../components/resources/gif10.gif";
@@ -86,6 +88,23 @@ function SignIn() {
       });
   };
 
+  const handleGoogle = (decoded) => {
+    fetch("http://localhost:6060/users", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const val = data.find((el) => el.email === decoded.email);
+        console.log(val);
+        if (val) {
+          alert("Login Successfull !!!");
+          //   navigate("/")
+        } else {
+          alert("Wrong Credentials !!");
+        }
+      });
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <img className="gif-image" src={displayedGif} alt="GIF" />
@@ -139,6 +158,22 @@ function SignIn() {
               </Link>
             </Text>
           </Grid>
+          <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                var decoded = jwt_decode(credentialResponse.credential);
+                console.log(decoded);
+                handleGoogle(decoded);
+              }}
+              // onClick={(credentialResponse) => {
+              //   var decoded = jwt_decode(credentialResponse.credential);
+              //   handleGoogle(decoded);
+              // }}
+              onError={() => {
+                console.log("Signup Failed");
+              }}
+            />
+          </GoogleOAuthProvider>
         </Center>
       </Box>
     </ChakraProvider>
