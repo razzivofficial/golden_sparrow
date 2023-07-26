@@ -1,7 +1,7 @@
 import React from "react";
-import gif1 from "../../components/resources/gif1.gif";
-import gif2 from "../../components/resources/gif2.gif";
-import gif3 from "../../components/resources/gif3.gif";
+import gif1 from "../../components/resources/gif8.gif";
+import gif2 from "../../components/resources/gif10.gif";
+import gif3 from "../../components/resources/gif7.gif";
 import gif4 from "../../components/resources/gif4.gif";
 import { useState } from "react";
 import {
@@ -68,7 +68,7 @@ function SignUp() {
     <ChakraProvider theme={theme}>
       <img className="gif-image" src={displayedGif} alt="GIF" />
       <div id="title">
-        <h1>Welcome to GOLDEN SPARROW!</h1>
+        <h1>Hey, Unlock the Charms of Glamour!</h1>
       </div>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Box p={4}>

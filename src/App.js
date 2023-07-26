@@ -1,10 +1,11 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import Details from "./pages/details/Details";
+import Invoice from "./pages/invoice/Invoice";
+
 function App() {
   return (
     <>
-      <Details />
+      <Invoice />
     </>
   );
 }
