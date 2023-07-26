@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import gif1 from "../../components/resources/gif1.gif";
-import gif2 from "../../components/resources/gif2.gif";
-import gif3 from "../../components/resources/gif3.gif";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import gif1 from "../../components/resources/gif8.gif";
+import gif2 from "../../components/resources/gif10.gif";
+import gif3 from "../../components/resources/gif7.gif";
 import gif4 from "../../components/resources/gif4.gif";
 import {
   Input,
-  InputGroup,
-  InputLeftAddon,
   Grid,
   ChakraProvider,
   ColorModeScript,
   extendTheme,
   Center,
-  Stack,
-  Checkbox,
   Link,
   FormControl,
   FormLabel,
   Button,
   Text,
   Box,
-  Flex,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  MenuGroup,
 } from "@chakra-ui/react";
 import "./signin.css"; // Create a new CSS file for SignIn styles
 
@@ -31,6 +34,14 @@ const theme = extendTheme({
     useSystemColorMode: false, // Set to true if you want to use the user's system preference for dark mode
   },
 });
+
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
 
 function SignIn() {
   const gifMap = {
@@ -52,33 +63,83 @@ function SignIn() {
       setDisplayedGif(gifMap.password);
     }
   };
+  const handlesubmit = () => {
+    handleButtonClick();
+    validateEmail();
+  };
 
   const handleButtonClick = () => {
-    // Simulating an error for the demo
     setIsError(true);
     setDisplayedGif(gifMap.error);
+  };
 
-    // In a real scenario, you can perform your sign-in logic here
-    // and update 'isError' accordingly based on the authentication result.
+  //   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [subscribe, setGender] = useState("");
+
+  const handleSignin = () => {
+    fetch("http://localhost:6060/users", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const val = data.find((el) => el.email === email);
+        if (val.email === email && val.password === pass) {
+          alert("Login Successfull !!!");
+          //   navigate("/")
+        } else {
+          alert("Wrong Credentials !!");
+        }
+      });
+  };
+
+  const handleGoogle = (decoded) => {
+    fetch("http://localhost:6060/users", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const val = data.find((el) => el.email === decoded.email);
+        console.log(val);
+        if (val) {
+          alert("Login Successfull !!!");
+          //   navigate("/")
+        } else {
+          alert("Wrong Credentials !!");
+        }
+      });
   };
 
   return (
     <ChakraProvider theme={theme}>
-      <img className="gif-image" src={displayedGif} alt="GIF" />
+      <div className="gifCss">
+        <img className="gif-image" src={displayedGif} alt="GIF" />
+      </div>
       <div id="title">
         <h1>Welcome Back!</h1>
       </div>
+
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Box p={4}>
-        <Center h="40vh">
-          <Grid templateColumns="repeat(2, 1fr)" gap={7} maxW="600px">
+        <Center h={{ base: "60vh", md: "40vh" }}>
+          <Grid
+            templateColumns={{ md: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
+            gap={7}
+            maxW="600px"
+          >
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input
                 variant="filled"
                 type="email"
+                id="email"
                 placeholder="Enter Email"
-                onChange={handleFieldChange}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  handleFieldChange(e);
+                }}
+                
               />
             </FormControl>
 
@@ -87,15 +148,50 @@ function SignIn() {
               <Input
                 variant="filled"
                 type="password"
+                id="password"
                 placeholder="Enter Password"
-                onChange={handleFieldChange}
+                onChange={(e) => {
+                  setPass(e.target.value);
+                  handleFieldChange(e);
+                }}
               />
             </FormControl>
+
+            <Menu>
+              <MenuButton as={Button} colorScheme="blue">
+                Subscribe
+              </MenuButton>
+              <MenuList>
+                <MenuGroup title="Subscribe">
+                  <MenuItem
+                    onClick={(e) => {
+                      setGender("Male");
+                    }}
+                  >
+                    Subscribe to Newsletters
+                  </MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      setGender("Female");
+                    }}
+                  >
+                    Give Offer Updates
+                  </MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      setGender("Other");
+                    }}
+                  >
+                    Both
+                  </MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </Menu>
 
             <Button
               colorScheme="purple"
               mt={{ base: 4, md: 0 }}
-              onClick={handleButtonClick}
+              onClick={handleSignin}
             >
               Sign In
             </Button>
@@ -105,6 +201,17 @@ function SignIn() {
                 Sign Up
               </Link>
             </Text>
+            <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  var decoded = jwt_decode(credentialResponse.credential);
+                  handleGoogle(decoded);
+                }}
+                onError={() => {
+                  console.log("Signup Failed");
+                }}
+              />
+            </GoogleOAuthProvider>
           </Grid>
         </Center>
       </Box>

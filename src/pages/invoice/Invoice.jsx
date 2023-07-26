@@ -149,7 +149,7 @@ export default function Invoice() {
             <MDBCol xl="2">
               <ChakraProvider>
                 <Button colorScheme="blue" variant="solid">
-                  Print
+                  Pay Now
                 </Button>
               </ChakraProvider>
             </MDBCol>
