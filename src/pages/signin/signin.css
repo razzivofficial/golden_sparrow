@@ -16,7 +16,7 @@
 }
 
 
-/* .gifCss {
+.gifCss {
   max-width: 25%;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@
   padding: 2rem;
   margin: 1% 0% 0% 38%;
   overflow: hidden;
-} */
+}
 
 @media screen and (max-width: 768px) {
   .gifCss {
