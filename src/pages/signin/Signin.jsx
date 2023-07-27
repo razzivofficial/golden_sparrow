@@ -28,12 +28,12 @@ import {
 import "./signin.css"; // Create a new CSS file for SignIn styles
 
 // Create a custom theme with dark mode enabled
-// const theme = extendTheme({
-//   config: {
-//     initialColorMode: "light", // Set 'dark' if you want to start with dark mode by default
-//     useSystemColorMode: false, // Set to true if you want to use the user's system preference for dark mode
-//   },
-// });
+const theme = extendTheme({
+  config: {
+    initialColorMode: "light", // Set 'dark' if you want to start with dark mode by default
+    useSystemColorMode: false, // Set to true if you want to use the user's system preference for dark mode
+  },
+});
 
 const validateEmail = (email) => {
   return String(email)
