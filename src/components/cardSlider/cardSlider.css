@@ -3,8 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
   margin-left: 60%;
+  /* width: 100%; */
 }
 
 /* Media Queries for Responsiveness */

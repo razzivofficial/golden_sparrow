@@ -82,6 +82,8 @@ function SignUp() {
   const [pass, setPass] = useState("");
   const [pass1, setPass1] = useState("");
   const [gender, setGender] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
 
   const handleSignin = () => {
     let errors = {};
@@ -151,6 +153,7 @@ function SignUp() {
 
   return (
     <>
+      <Navbar />
       <ChakraProvider theme={theme}>
         <div className="gifCss">
           <img className="gif-image" src={displayedGif} alt="GIF" />
@@ -161,16 +164,7 @@ function SignUp() {
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Box p={4}>
           <Center h="40vh">
-            <Grid
-              templateColumns={{
-                base: "repeat(1, 1fr)",
-                md: "repeat(2, 1fr)",
-                lg: "repeat(2, 1fr)",
-              }}
-              gap={7}
-              maxW="600px"
-              mt={{ base: "27rem", md: "7rem", lg: "7rem" }}
-            >
+            <Grid templateColumns="repeat(2, 1fr)" gap={7} maxW="600px">
               <FormControl isRequired>
                 <FormLabel>Mobile Number</FormLabel>
                 <InputGroup>
@@ -277,8 +271,7 @@ function SignUp() {
 
               <Flex
                 justify="space-between"
-                direction={{ base: "column", md: "row" }}
-              >
+                direction={{ base: "column", md: "row" }}>
                 <RadioGroup>
                   <Stack spacing={5} direction="row">
                     <Radio
@@ -287,8 +280,7 @@ function SignUp() {
                       value="1"
                       onClick={(e) => {
                         setGender("Male");
-                      }}
-                    >
+                      }}>
                       Male
                     </Radio>
                     <Radio
@@ -297,8 +289,7 @@ function SignUp() {
                       value="2"
                       onClick={(e) => {
                         setGender("Female");
-                      }}
-                    >
+                      }}>
                       Female
                     </Radio>
                     <Radio
@@ -307,32 +298,31 @@ function SignUp() {
                       value="3"
                       onClick={(e) => {
                         setGender("Other");
-                      }}
-                    >
+                      }}>
                       Others
                     </Radio>
                   </Stack>
                 </RadioGroup>
               </Flex>
-              <Box
-                height="8vh"
-                display={"flex"}
-                justifyContent={"center"}
-                mt={"5%"}
-                gap={5}
-              >
-                <Text as="i" mt={2}>
-                  Already a member?{" "}
-                  <Link href="../signin/Signin" color="purple">
-                    LOG IN
-                  </Link>
-                </Text>
-              </Box>
             </Grid>
           </Center>
+          <Box
+            height="8vh"
+            display={"flex"}
+            justifyContent={"center"}
+            mt={"5%"}
+            gap={5}>
+            <Text as="i" mt={2}>
+              Already a member?{" "}
+              <Link href="../signin/Signin" color="purple">
+                LOG IN
+              </Link>
+            </Text>
+          </Box>
         </Box>
       </ChakraProvider>
       <ToastContainer />
+      <Footer />
     </>
   );
 }

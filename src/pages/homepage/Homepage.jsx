@@ -2,7 +2,7 @@ import React from "react";
 import "./homepage.css";
 import Cardslider from "../../components/cardSlider/cardslider";
 import Slider from "../../components/slider/Slider";
-import CountdownTimer from "../../components/CountdownTimer/CountdownTimer";
+import Clock from "../../components/Clock/Clock";
 import Jel1 from "../../components/resources/1.jpg";
 import Jel2 from "../../components/resources/2.jpg";
 import Jel3 from "../../components/resources/3.webp";
@@ -10,15 +10,13 @@ import bg from "../../components/resources/bg1.jpg";
 import expVid from "../../components/resources/expVid.mp4";
 import CardGallery from "../../components/CardGallary/CardGallary";
 import { Image } from "@chakra-ui/react";
-
-const SALES_TIMER = 3 * 24 * 60 * 60 * 1000;
-const NOW_IN_MS = new Date().getTime();
-
-const dateTimeAfterThreeDays = NOW_IN_MS + SALES_TIMER;
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 export default function Homepage() {
   return (
     <>
+      <Navbar />
       <Slider />
       <div className="parentPic">
         <div class="bar">
@@ -40,21 +38,22 @@ export default function Homepage() {
           </div>
           <br />
 
-          <div direction="row">
-            <Image boxSize="32.5%" objectFit="cover" src={Jel1} alt="error" />
-            <Image boxSize="35%" objectFit="cover" src={Jel2} alt="error" />
-            <Image boxSize="32.5%" objectFit="cover" src={Jel3} alt="error" />
+          <div className="imageDiv">
+            <Image w="30%" objectFit="cover" src={Jel1} alt="error" />
+            <Image w="40%" objectFit="cover" src={Jel2} alt="error" />
+            <Image w="30%" objectFit="cover" src={Jel3} alt="error" />
           </div>
         </div>
         <div class="ten">
           <h1>Sparkling Deals Await! Don't Miss Out - Time is Ticking!</h1>
-          <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+          <Clock/>
         </div>
         <div className="promo">
-          <video src={expVid} autoPlay muted></video>
+          <video src={expVid} loop autoPlay muted></video>
         </div>
         <CardGallery />
       </div>
+      <Footer />
     </>
   );
 }

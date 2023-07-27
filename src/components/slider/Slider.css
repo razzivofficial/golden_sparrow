@@ -23,6 +23,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .current {
@@ -38,7 +39,6 @@
   width: 50%;
   color: #fff;
   padding: 0rem;
-  background: rgba(0, 0, 0, 0.3);
   animation: slide-up 1s ease 0.5s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
@@ -48,11 +48,11 @@
 @keyframes slide-up {
   0% {
     visibility: visible;
-    top: 23rem;
+    top: 27rem;
   }
   100% {
     visibility: visible;
-    top: 17rem;
+    bottom: 2rem;
   }
 }
 @media screen and (min-width: 600px) {

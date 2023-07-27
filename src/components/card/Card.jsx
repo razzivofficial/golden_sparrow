@@ -1,78 +1,100 @@
-import React,{useState} from 'react';
+import React, { useState } from "react";
 import {
-    Card,
-    CardBody,
-    Stack,
-    Heading,
-    Text,
-    ButtonGroup,
-    Button,
-    Center,
-    Flex,
-    IconButton,
-    Tag,
-    HStack
-  } from "@chakra-ui/react";
-  import { FiHeart } from 'react-icons/fi';
-  import { FcLike } from 'react-icons/fc';
-  import './card.css';
+  Card,
+  CardBody,
+  Stack,
+  Heading,
+  Text,
+  ButtonGroup,
+  Button,
+  Center,
+  Flex,
+  IconButton,
+  ChakraProvider,
+  ColorModeScript,
+  extendTheme,
+  useColorMode,
+} from "@chakra-ui/react";
+import { FiHeart } from "react-icons/fi";
+import { FcLike } from "react-icons/fc";
+import "./card.css";
+import { useNavigate } from "react-router-dom";
 
-  const PCard = () => {
-    const [isFavorite, setIsFavorite] = useState(false);
-  
-    const handleWishlistClick = () => {
-      setIsFavorite((prevState) => !prevState);
-    };
-    return(
-        <Card maxW='sm' m={"3%"} p={"1%"} border={"1px solid black"} >
-          {/* Tag starts */}
-          <HStack>
-          <Tag size='md' key='md' variant='solid' colorScheme='yellow'>BESTSELLER</Tag>
-          </HStack>
-          {/* Tag ends */}
-          <Flex justifyContent={"flex-end"}>
-               <IconButton
-                  isRound={true}
-                  variant="solid"
-                  colorScheme="gray"
-                  aria-label="Toggle Wishlist"
-                  fontSize="20px"
-                  icon={isFavorite ? <FcLike /> : <FiHeart />}
-                  onClick={handleWishlistClick}
-                />
-          </Flex>
-            <CardBody>
-                <Center>
-                  <div class="container">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS61onY_u-H-UFCh9sakQURQWj1z-zkI1kbog&usqp=CAU"
-                      alt="" />
-                  </div>
-                </Center>
-              <Stack mt='6' spacing='1'>
-                <Heading size='md'>$450</Heading>
-                <Text color='black.400' fontSize='sm'>
-                  Diamond Set
-                </Text>
-                <Text fontSize='xs'>
-                  A perfect set for every occasion.
-                </Text>
-              </Stack>
-            </CardBody>
-          <ButtonGroup spacing='3' m='auto' size='sm'>
-            <Button variant='outline' colorScheme='purple'>
-              Show Details
-            </Button>
-            <Button variant='outline' colorScheme='purple'>
-              Add to cart
-            </Button>
-          </ButtonGroup>
-  
-        </Card>
-    )
-}
+// Create a custom theme with dark mode enabled
+const theme = extendTheme({
+  config: {
+    initialColorMode: "light", // Set 'dark' if you want to start with dark mode by default
+    useSystemColorMode: false, // Set to true if you want to use the user's system preference for dark mode
+  },
+});
 
+const PCard = ({ image, link, product, value, id }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const { colorMode } = useColorMode(); // Get the current color mode (light or dark)
+  const navigate = useNavigate();
 
+  const handleWishlistClick = () => {
+    setIsFavorite((prevState) => !prevState);
+  };
+  const handleClick = () => {
+    navigate(`/details/${id}`);
+  };
 
-export default PCard ;
+  return (
+    <Card
+      maxW="sm"
+      m={"3%"}
+      p={"1%"}
+      border={"1px solid black"}
+      bg={colorMode === "dark" ? "gray.700" : "white"}
+      borderRadius={"20px"}>
+      <Flex justifyContent={"flex-end"}>
+        <IconButton
+          isRound={true}
+          variant="solid"
+          colorScheme="gray"
+          aria-label="Toggle Wishlist"
+          fontSize="20px"
+          icon={isFavorite ? <FcLike /> : <FiHeart />}
+          onClick={handleWishlistClick}
+          color={
+            isFavorite ? "red.500" : colorMode === "dark" ? "white" : "gray.600"
+          }
+        />
+      </Flex>
+      <CardBody>
+        <Center>
+          <div className="container">
+            <img src={image} alt="" />
+          </div>
+        </Center>
+        <Stack mt="6" spacing="1">
+          <Heading size="md">{value}</Heading>
+          <Text
+            color={colorMode === "dark" ? "white" : "black.400"}
+            fontSize="sm">
+            {product}
+          </Text>
+          <Text
+            fontSize="xs"
+            color={colorMode === "dark" ? "gray.300" : "black.500"}>
+            {link}
+          </Text>
+        </Stack>
+      </CardBody>
+      <ButtonGroup spacing="3" m="auto" size="sm" pb={"1%"}>
+        <Button
+          variant="outline"
+          colorScheme="purple"
+          onClick={() => handleClick()}>
+          Show Details
+        </Button>
+        <Button variant="outline" colorScheme="purple">
+          Add to cart
+        </Button>
+      </ButtonGroup>
+    </Card>
+  );
+};
 
-
+export default PCard;

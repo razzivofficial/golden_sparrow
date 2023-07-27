@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo");
 
-body,
+/* body,
 html {
   display: flex;
   justify-content: center;
@@ -11,13 +11,13 @@ html {
   background: #f5f4f4;
   font-size: 13px;
   font-family: "Arvo", monospace;
-}
-@supports (display: grid) {
+} */
+/* @supports (display: grid) {
   body,
   html {
     display: block;
   }
-}
+} */
 
 .message {
   border: 1px solid #d2d0d0;

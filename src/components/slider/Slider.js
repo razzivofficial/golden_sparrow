@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { sliderData } from "./slider-data";
 import "./Slider.css";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,6 +11,12 @@ const Slider = () => {
   const autoScroll = true;
   let slideInterval;
   let intervalTime = 5000;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/jwellery/Bestseller");
+  };
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
@@ -43,9 +50,9 @@ const Slider = () => {
       {sliderData.map((slide, index) => {
         return (
           <div
+            onClick={() => handleClick()}
             className={index === currentSlide ? "slide current" : "slide"}
-            key={index}
-          >
+            key={index}>
             {index === currentSlide && (
               <div>
                 <img src={slide.image} alt="slide" className="image" />

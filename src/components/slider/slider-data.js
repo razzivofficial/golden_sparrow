@@ -1,20 +1,35 @@
 export const sliderData = [
   {
-    image:
-      "https://wallpapers.com/images/hd/aesthetic-indian-woman-wearing-gold-jewelry-glvsb0iilu4xxz5z.jpg",
-    heading: "Slide One",
-    desc: "This is the description of slide one Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
+    image: "https://wallpaperaccess.com/full/3714986.jpg",
+    heading: "Eternal Sparkle",
+    desc: " Adorned with dazzling jewelry, women embrace the timeless allure of elegance and radiate their inner brilliance through every facet.",
   },
   {
-    image:
-      "https://i.pinimg.com/originals/d8/e8/42/d8e84217563746154bed394c70ab24b8.jpg",
-    heading: "Slide Two",
-    desc: "This is the description of slide two Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
+    image: "https://wallpapercave.com/dwp2x/wp11043086.jpg",
+    heading: "Chains of Grace",
+
+    desc: " As women wear jewelry, delicate chains of grace intertwine with their spirit, elevating their beauty and empowering their confidence.",
   },
   {
-    image:
-      "https://w.forfun.com/fetch/11/117d5517d03199e18bea1425162d5ff9.jpeg",
-    heading: "Slide Three",
-    desc: "This is the description of slide three Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi quos quas, voluptatum nesciunt illum exercitationem.",
+    image: "https://wallpaperaccess.com/full/3713703.jpg",
+    heading: "Gems of Strength",
+    desc: "Women don jewelry as a reminder of their resilience and tenacity, for like precious gems, they withstand life's pressures and shine with strength.",
+  },
+
+  {
+    image: "https://wallpapercave.com/dwp2x/wp8302412.jpg",
+    heading: "Pearls of Wisdom",
+    desc: " Women wear jewelry like pearls of wisdom, embodying the grace and intelligence that illuminates their path to greatness.",
+  },
+  {
+    image: "https://wallpaperaccess.com/full/1907874.jpg",
+    heading: "Cherished Trinkets",
+    desc: "Every cherished jewelry piece holds a story, a memory, or a sentiment, making it more than an accessory—it becomes a part of who she is.",
+  },
+  ,
+  {
+    image: "https://wallpaperaccess.com/full/3715059.jpg",
+    heading: "The Sparkling Soul",
+    desc: "Women wear jewelry not to hide who they are, but to reflect the sparkling soul within, unapologetically embracing their true selves.",
   },
 ];
