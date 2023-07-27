@@ -5,20 +5,10 @@
       "email": "mail2sahooantaryami@gmail.com",
       "fname": "Antaryami",
       "lname": "Sahoo",
-      "password": "12345",
-      "cpassword": "12345",
+      "password": "123456",
+      "cpassword": "123456",
       "gender": "Male",
       "id": 1
-    },
-    {
-      "mobile": "07884838884",
-      "email": "cse.21bcsd41@silicon.ac.in",
-      "fname": "Sahoo",
-      "lname": "Diptiranjan",
-      "password": "45678",
-      "cpassword": "45678",
-      "gender": "Male",
-      "id": 2
     }
   ]
 }

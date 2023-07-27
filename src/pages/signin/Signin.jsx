@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./signin.css"; // Create a new CSS file for SignIn styles
 import gif1 from "../../components/resources/gif8.gif";
 import gif2 from "../../components/resources/gif10.gif";
 import gif3 from "../../components/resources/gif7.gif";
@@ -19,8 +22,12 @@ import {
   Button,
   Text,
   Box,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  MenuGroup,
 } from "@chakra-ui/react";
-import "./signin.css"; // Create a new CSS file for SignIn styles
 
 // Create a custom theme with dark mode enabled
 const theme = extendTheme({
@@ -29,14 +36,6 @@ const theme = extendTheme({
     useSystemColorMode: false, // Set to true if you want to use the user's system preference for dark mode
   },
 });
-
-const validateEmail = (email) => {
-  return String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-};
 
 function SignIn() {
   const gifMap = {
@@ -47,41 +46,82 @@ function SignIn() {
 
   const [displayedGif, setDisplayedGif] = useState(gif1);
   const [isError, setIsError] = useState(false);
+  const [errorMessages, setErrorMessages] = useState({});
 
   const handleFieldChange = (event) => {
     const inputType = event.target.type;
     const val = event.target.value;
-    console.log(val);
     if (!val) {
       setDisplayedGif(gifMap.email);
     } else if (val) {
       setDisplayedGif(gifMap.password);
     }
   };
-  const handlesubmit = () => {
-    handleButtonClick();
-    validateEmail();
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   };
+  const validatePassword = (password) => {
+    return password.length >= 6;
+  };
+
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [subscribe, setSubscribe] = useState("");
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     setIsError(true);
     setDisplayedGif(gifMap.error);
   };
 
-  //   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
   const handleSignin = () => {
+    let errors = {};
+    setIsError(false);
+
+    if (!validateEmail(email) || email === "") {
+      errors.email = "Please check your Email";
+      alert("Please check your Email");
+      // toast.error(errors.email);
+      // setIsError(true);
+      setDisplayedGif(gifMap.error);
+    } else if (!validatePassword(pass)) {
+      errors.pass = "Password is not Matching";
+      alert("Password is not Matching");
+      // toast.error(errors.pass);
+      // setIsError(true);
+      setDisplayedGif(gifMap.error);
+    } else if (!subscribe) {
+      errors.subscribe = "Please Subscribe";
+      alert("Please Subscribe");
+      // toast.error(errors.subscribe);
+      // setIsError(true);
+      setDisplayedGif(gifMap.error);
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setErrorMessages(errorMessages);
+      return;
+    }
+
     fetch("http://localhost:6060/users", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
         const val = data.find((el) => el.email === email);
-        if (val.email === email && val.password === pass) {
-          alert("Login Successfull !!!");
-          //   navigate("/")
+        if (val !== undefined) {
+          if (val.email === email && val.password === pass) {
+            alert("Login Successfully !!!");
+            navigate("/");
+            localStorage.setItem("token", JSON.stringify(Date.now()));
+          } else {
+            alert("Something Went Wrong!");
+          }
         } else {
           alert("Wrong Credentials !!");
         }
@@ -98,23 +138,30 @@ function SignIn() {
         console.log(val);
         if (val) {
           alert("Login Successfull !!!");
-          //   navigate("/")
+          navigate("/");
         } else {
-          alert("Wrong Credentials !!");
+          alert("Account does not Exist!!");
         }
       });
   };
 
   return (
     <ChakraProvider theme={theme}>
-      <img className="gif-image" src={displayedGif} alt="GIF" />
+      <div className="gifCss">
+        <img className="gif-image" src={displayedGif} alt="GIF" />
+      </div>
       <div id="title">
         <h1>Welcome Back!</h1>
       </div>
+
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Box p={4}>
-        <Center h="40vh">
-          <Grid templateColumns="repeat(2, 1fr)" gap={7} maxW="600px">
+        <Center h={{ base: "60vh", md: "40vh" }}>
+          <Grid
+            templateColumns={{ md: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
+            gap={7}
+            maxW="600px"
+          >
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input
@@ -123,9 +170,10 @@ function SignIn() {
                 id="email"
                 placeholder="Enter Email"
                 onChange={(e) => {
+                  validateEmail(email);
                   setEmail(e.target.value);
+                  handleFieldChange(e);
                 }}
-                //     onChange={handleFieldChange}
               />
             </FormControl>
 
@@ -138,16 +186,46 @@ function SignIn() {
                 placeholder="Enter Password"
                 onChange={(e) => {
                   setPass(e.target.value);
+                  handleFieldChange(e);
                 }}
-                //     onChange={handleFieldChange}
               />
             </FormControl>
+
+            <Menu>
+              <MenuButton as={Button} colorScheme="blue">
+                Subscribe
+              </MenuButton>
+              <MenuList>
+                <MenuGroup title="Subscribe">
+                  <MenuItem
+                    onClick={(e) => {
+                      setSubscribe("Subscribe to Newsletters");
+                    }}
+                  >
+                    Subscribe to Newsletters
+                  </MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      setSubscribe("Give Offer Updates");
+                    }}
+                  >
+                    Give Offer Updates
+                  </MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      setSubscribe("Both");
+                    }}
+                  >
+                    Both
+                  </MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </Menu>
 
             <Button
               colorScheme="purple"
               mt={{ base: 4, md: 0 }}
               onClick={handleSignin}
-              //   onClick={handleButtonClick}
             >
               Sign In
             </Button>
@@ -157,23 +235,18 @@ function SignIn() {
                 Sign Up
               </Link>
             </Text>
+            <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  var decoded = jwt_decode(credentialResponse.credential);
+                  handleGoogle(decoded);
+                }}
+                onError={() => {
+                  console.log("Signup Failed");
+                }}
+              />
+            </GoogleOAuthProvider>
           </Grid>
-          <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
-            <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                var decoded = jwt_decode(credentialResponse.credential);
-                console.log(decoded);
-                handleGoogle(decoded);
-              }}
-              // onClick={(credentialResponse) => {
-              //   var decoded = jwt_decode(credentialResponse.credential);
-              //   handleGoogle(decoded);
-              // }}
-              onError={() => {
-                console.log("Signup Failed");
-              }}
-            />
-          </GoogleOAuthProvider>
         </Center>
       </Box>
     </ChakraProvider>
