@@ -169,28 +169,34 @@ export default function Navbar() {
           </HStack>
           <Flex alignItems={"center"}>
             <ButtonGroup display={{ base: "none", md: "none", lg: "flex" }}>
-              <Button
-                variant={"solid"}
-                id="signup"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #d63feb, #b06df8, #9187f7, #8299ec, #88a6d9)",
-                }}>
-                {" "}
-                Signup
-              </Button>
-              <Button
-                variant={"outline"}
-                colorScheme="purple"
-                color={useColorModeValue("purple", "purple")}>
-                Login
-              </Button>
+              <Link to={"/signup"}>
+                <Button
+                  variant={"solid"}
+                  id="signup"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, #d63feb, #b06df8, #9187f7, #8299ec, #88a6d9)",
+                  }}>
+                  {" "}
+                  Signup
+                </Button>
+              </Link>
+              <Link to={"/login"}>
+                <Button
+                  variant={"outline"}
+                  colorScheme="purple"
+                  color={useColorModeValue("purple", "purple")}>
+                  Login
+                </Button>
+              </Link>
               <Button variant={"unstyled"}>
                 <Icon className="abtn" as={AiFillHeart} />
               </Button>
-              <Button variant={"unstyled"}>
-                <Icon className="abtn" as={BsHandbagFill} />
-              </Button>
+              <Link to={"/addtocart"}>
+                <Button variant={"unstyled"}>
+                  <Icon className="abtn" as={BsHandbagFill} />
+                </Button>
+              </Link>
               <Button
                 onClick={toggleColorMode}
                 variant={"unstyled"}
@@ -213,16 +219,25 @@ export default function Navbar() {
               </MenuButton>
               <MenuList color={useColorModeValue("black", "white")}>
                 <MenuItem display={{ lg: "block" }}>
-                  <Button variant={"unstyled"}>Signup</Button>
+                  <Link to={"/signup"}>
+                    <Button variant={"unstyled"}>Signup</Button>
+                  </Link>
                 </MenuItem>
                 <MenuDivider display={{ md: "none" }} />
                 <MenuItem display={{ lg: "block" }}>
-                  <Button variant={"unstyled"}>Login</Button>
+                  <Link to={"/login"}>
+                    <Button variant={"unstyled"}>Login</Button>
+                  </Link>
                 </MenuItem>
                 <MenuDivider display={{ md: "none" }} />
 
                 <MenuItem>
                   <Button variant={"unstyled"}>Profile</Button>
+                </MenuItem>
+                <MenuItem>
+                  <Link to={"/addtocart"}>
+                    <Button variant={"unstyled"}>Cart</Button>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
                   <Button onClick={toggleColorMode} variant={"unstyled"}>
