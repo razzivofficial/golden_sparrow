@@ -13,8 +13,10 @@
 /* For tablets and smaller screens */
 @media screen and (max-width: 768px) {
   .CardSlider {
-    width: 100%;
-    margin-left: 30%;
+    /* width: 100%;
+    margin-left: 30%; */
+    width: 50%;
+    margin-left: 2%;
   }
 }
 
@@ -23,6 +25,5 @@
   .CardSlider {
     width: 100%;
     margin-left: 0%;
-    
   }
 }

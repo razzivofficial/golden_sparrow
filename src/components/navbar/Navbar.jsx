@@ -301,7 +301,7 @@ export default function Navbar() {
                 </Link>
                 <Link to={"/jwellery/Bangle"}>
                   <Button as={Button} className="btn">
-                    Bangle
+                    BANGLES
                   </Button>
                 </Link>
                 <Link to={"/jwellery/Ring"}>
@@ -323,7 +323,7 @@ export default function Navbar() {
                   <Button className="btn">CHAINS</Button>
                 </Link>
                 <Link to={"/jwellery/Kada"}>
-                  <Button className="btn">KADA</Button>
+                  <Button className="btn">KADAS</Button>
                 </Link>
                 <Link to={"/jwellery/Haram"}>
                   <Button>HARAM</Button>
@@ -373,7 +373,7 @@ export default function Navbar() {
             </Link>
             <Link to={"/jwellery/Bangle"}>
               <Button as={Button} className="btn">
-                BANGLE
+                BANGLES
               </Button>
             </Link>
             <Link to={"/jwellery/Ring"}>
@@ -396,7 +396,7 @@ export default function Navbar() {
               <Button className="btn">CHAINS</Button>
             </Link>
             <Link to={"/jwellery/Kada"}>
-              <Button className="btn">KADA</Button>
+              <Button className="btn">KADAS</Button>
             </Link>
             <Menu>
               <MenuButton as={Button} className="btn">

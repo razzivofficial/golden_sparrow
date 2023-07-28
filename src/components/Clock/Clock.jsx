@@ -41,10 +41,14 @@ const Clock = () => {
   return (
     <div className="clock-container">
       <div className="clock">
-        <p className="clock-label"  style={{color:"red"}}>{timeLeft}</p>
-        <p style={{ fontSize: "large", color: "purple" }}>Do Not Miss Offer!!!</p>
+        <p className="clock-label" style={{ color: "red" }}>
+          {timeLeft}
+        </p>
+        <p style={{ fontSize: "large", color: "purple" }}>
+          Do Not Miss Offer!!!
+        </p>
         <p style={{ fontSize: "x-large", color: "brown" }}>
-          Apply Promo code GOLD11 to get 11% Discount
+          Apply Promo Code GOLD11 To Get 11% Discount!
         </p>
       </div>
     </div>

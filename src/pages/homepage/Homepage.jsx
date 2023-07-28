@@ -48,7 +48,7 @@ export default function Homepage() {
           <h1>Sparkling Deals Await! Don't Miss Out - Time is Ticking!</h1>
           <Clock/>
         </div>
-        <div className="promo">
+        <div>
           <video src={expVid} loop autoPlay muted></video>
         </div>
         <CardGallery />
