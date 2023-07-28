@@ -7,7 +7,7 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## Logo
 
-![Logo](https://github.com/razzivofficial/golden_sparrow/assets/113410862/536b4a6b-1695-4aa4-9504-022c15155780)
+<img src="https://github.com/razzivofficial/golden_sparrow/assets/113410862/536b4a6b-1695-4aa4-9504-022c15155780" width="200">
 
 ## Features
 
@@ -41,7 +41,8 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## UserFlow
 
-![Alt text](userflow.jpg)
+![userflow](https://github.com/razzivofficial/golden_sparrow/assets/113410862/292296c9-9be8-446e-b294-f86f8f60537a)
+
 
 Explanation:
 
