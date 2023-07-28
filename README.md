@@ -41,8 +41,7 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## UserFlow
 
-![userflow](https://github.com/razzivofficial/golden_sparrow/assets/113410862/292296c9-9be8-446e-b294-f86f8f60537a)
-
+![userflow](https://github.com/razzivofficial/golden_sparrow/assets/113410862/931f0e09-6e66-43c1-9630-5f873e684526)
 
 Explanation:
 
