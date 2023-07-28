@@ -11,12 +11,6 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## Features
 
-➜ Browsing Categories: Users can explore various jewelry categories, such as necklaces, earrings, rings, bracelets, etc. on the homepage.
-
-➜ Product Details: Each jewelry item in a category has its dedicated page showcasing high-resolution images, product specifications, and pricing.
-
-➜ Shopping Cart: Users can add desired items to their shopping cart, review the cart contents, and modify quantities or remove items as needed.
-
 ➜ Dark Mode and Light Mode: The application offers users the option to switch between Dark Mode and Light Mode to customize their browsing experience based on their preferences. The Dark Mode is ideal for low-light environments, reducing eye strain and providing a visually appealing interface.
 
 ➜ ChatBot - CareSparrow: We have introduced CareSparrow, the friendly and intelligent chatbot, to assist users throughout their journey on the website. CareSparrow can answer common queries, provide product recommendations, and guide users through the checkout process.
@@ -24,6 +18,12 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 ➜ Checkout Process with Payment System: A secure and user-friendly checkout process is provided, allowing users to enter shipping details, select payment methods, and place their orders. The application integrates a payment system for processing transactions securely.
 
 ➜ Address Finder by Pincode: Users can easily find their shipping address by entering their pincode. The application fetches the relevant address details associated with the pincode, streamlining the checkout process and providing a convenient user experience.
+
+➜ Browsing Categories: Users can explore various jewelry categories, such as necklaces, earrings, rings, bracelets, etc. on the homepage.
+
+➜ Product Details: Each jewelry item in a category has its dedicated page showcasing high-resolution images, product specifications, and pricing.
+
+➜ Shopping Cart: Users can add desired items to their shopping cart, review the cart contents, and modify quantities or remove items as needed.
 
 ➜ User Authentication: The application offers user registration and login functionality, providing a personalized experience for each user.
 
