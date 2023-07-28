@@ -8,9 +8,8 @@ import { useNavigate } from "react-router-dom";
 import gif1 from "../../components/resources/gif8.gif";
 import gif2 from "../../components/resources/gif10.gif";
 import gif3 from "../../components/resources/gif7.gif";
-// import Navbar from "../../components/navbar/Navbar";
-// import Footer from "../../components/footer/Footer";
-// import gif4 from "../../components/resources/gif4.gif";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 import { useState } from "react";
 import {
@@ -22,7 +21,6 @@ import {
   ColorModeScript,
   extendTheme,
   Center,
-  Link,
   FormControl,
   FormLabel,
   Button,
@@ -31,6 +29,7 @@ import {
   Flex,
   Stack,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 // Create a custom theme with dark mode enabled
 const theme = extendTheme({
@@ -83,7 +82,7 @@ function SignUp() {
   const [gender, setGender] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     let errors = {};
     setIsError(false);
 
@@ -125,51 +124,53 @@ function SignUp() {
       return;
     }
 
-    fetch("http://localhost:6060/users", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const comp = data.find((ele) => ele.email === email);
-        if (comp) {
-          toast.error("Email is already exist!!");
-          setIsError(true);
-        } else {
-          const obj = {
-            mobile: mobile,
-            email: email,
-            fname: fname,
-            lname: lname,
-            password: pass,
-            cpassword: pass1,
-            gender: gender,
-          };
-          fetch("http://localhost:6060/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(obj),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              toast.success("SignUp Successful !!!");
-              navigate("/signin");
-            });
+    try {
+      const obj = {
+        mob: mobile,
+        email: email,
+        fname: fname,
+        lname: lname,
+        pass: pass,
+        cpass: pass1,
+        gender: gender,
+      };
+      console.log(obj);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/customer/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
         }
-      });
+      );
+      console.log(response);
+      if (response.ok) {
+        const res = await response.json();
+        console.log(res);
+        toast.success("Sign Up Successfull !!");
+        navigate("/signin");
+      } else {
+        const err = await response.json();
+        throw new Error(err);
+      }
+    } catch (error) {
+      alert(error.msg);
+    }
   };
   return (
     <>
+      <Navbar />
       <ChakraProvider theme={theme}>
         <div className="gifCss">
           <img className="gif-image" src={displayedGif} alt="GIF" />
         </div>
         <div id="title">
-          <h1>Hey, Unlock the Charms of Glamour!</h1>
+          <Text>Hey, Unlock the Charms of Glamour!</Text>
         </div>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <Box p={4}>
+        <Box p={0} mb={{ base: "30rem", md: "10rem" }}>
           <Center h="40vh">
             <Grid
               templateColumns={{
@@ -179,8 +180,7 @@ function SignUp() {
               }}
               gap={7}
               maxW="600px"
-              mt={{ base: "27rem", md: "7rem", lg: "7rem" }}
-            >
+              mt={{ base: "27rem", md: "7rem", lg: "7rem" }}>
               <FormControl isRequired>
                 <FormLabel>Mobile Number</FormLabel>
                 <InputGroup>
@@ -189,6 +189,7 @@ function SignUp() {
                     id="mob"
                     type="tel"
                     placeholder="Mobile Number"
+                    variant={"outline"}
                     onChange={(e) => {
                       setMobile(e.target.value);
                       handleFieldChange(e);
@@ -208,7 +209,7 @@ function SignUp() {
                 <FormLabel>Email</FormLabel>
                 <Input
                   id="email"
-                  variant="filled"
+                  variant="outline"
                   type="email"
                   placeholder="Enter Email"
                   onChange={(e) => {
@@ -223,7 +224,7 @@ function SignUp() {
                 <FormLabel>First Name</FormLabel>
                 <Input
                   id="fname"
-                  variant="filled"
+                  variant={"outline"}
                   placeholder="First Name"
                   onChange={(e) => {
                     setFname(e.target.value);
@@ -236,7 +237,7 @@ function SignUp() {
                 <FormLabel>Last Name</FormLabel>
                 <Input
                   id="lname"
-                  variant="filled"
+                  variant={"outline"}
                   placeholder="Last Name"
                   onChange={(e) => {
                     setLname(e.target.value);
@@ -249,7 +250,7 @@ function SignUp() {
                 <FormLabel>Password</FormLabel>
                 <Input
                   id="password"
-                  variant="filled"
+                  variant={"outline"}
                   type="password"
                   placeholder="Enter Password"
                   onChange={(e) => {
@@ -263,7 +264,7 @@ function SignUp() {
                 <FormLabel>Confirm Password</FormLabel>
                 <Input
                   id="password1"
-                  variant="filled"
+                  variant={"outline"}
                   type="password"
                   placeholder="Confirm Password"
                   onChange={(e) => {
@@ -272,19 +273,9 @@ function SignUp() {
                   }}
                 />
               </FormControl>
-              <Button
-                id="signup"
-                colorScheme="purple"
-                mt={{ base: 4, md: 0 }}
-                onClick={handleSignup}
-              >
-                Sign Me Up!
-              </Button>
-
               <Flex
                 justify="space-between"
-                direction={{ base: "column", md: "row" }}
-              >
+                direction={{ base: "column", md: "row" }}>
                 <RadioGroup>
                   <Stack spacing={5} direction="row">
                     <Radio
@@ -293,8 +284,7 @@ function SignUp() {
                       value="1"
                       onClick={(e) => {
                         setGender("Male");
-                      }}
-                    >
+                      }}>
                       Male
                     </Radio>
                     <Radio
@@ -303,8 +293,7 @@ function SignUp() {
                       value="2"
                       onClick={(e) => {
                         setGender("Female");
-                      }}
-                    >
+                      }}>
                       Female
                     </Radio>
                     <Radio
@@ -313,32 +302,41 @@ function SignUp() {
                       value="3"
                       onClick={(e) => {
                         setGender("Other");
-                      }}
-                    >
+                      }}>
                       Others
                     </Radio>
                   </Stack>
                 </RadioGroup>
               </Flex>
-              <Box
-                height="8vh"
-                display={"flex"}
-                justifyContent={"center"}
-                mt={"5%"}
-                gap={5}
-              >
-                <Text as="i" mt={2}>
+              <Button
+                id="signup"
+                colorScheme="purple"
+                mt={{ base: 4, md: 0 }}
+                onClick={handleSignup}>
+                Sign Me Up!
+              </Button>
+
+              <Box height="8vh" mt={"5%"} gap={5} display={"flex"}>
+                <Text mt={2} w={"10rem"}>
                   Already a member?{" "}
-                  <Link href="../signin/Signin" color="purple">
-                    LOG IN
-                  </Link>
                 </Text>
+                <Link to={"/signin"}>
+                  <Button
+                    variant={"outline"}
+                    fontWeight={"700"}
+                    fontSize={"1rem"}
+                    pl={"1rem"}
+                    bg={"pink"}>
+                    LOG IN NOW
+                  </Button>
+                </Link>
               </Box>
             </Grid>
           </Center>
         </Box>
       </ChakraProvider>
       <ToastContainer />
+      <Footer />
     </>
   );
 }

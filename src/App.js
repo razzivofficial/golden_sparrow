@@ -1,14 +1,23 @@
 import "./App.css";
-// import SignUp from "./pages/signup/Signup";
-// import SignIn from "./pages/signin/Signin";
-// import Details from "./pages/details/Details";
-import AllRoutes from "./AllRoutes";
+import AllRoutes from "./AllRoute";
+import Details from "./pages/details/Details";
+import Invoice from "./pages/invoice/Invoice";
+import SignUp from "./pages/signup/Signup";
+import AddToCart from "./pages/addToCart/addCart";
+import Homepage from "./pages/homepage/Homepage";
+import Chatbot from "./components/chatbot";
 
 function App() {
   return (
-    <div className="App">
-      <AllRoutes />
-    </div>
+    <>
+      {/* <AllRoutes /> */}
+      <Homepage />
+      <Chatbot />
+      {/* <Details /> */}
+      {/* <Invoice /> */}
+      {/* <SignUp /> */}
+      {/* <AddToCart /> */}
+    </>
   );
 }
 

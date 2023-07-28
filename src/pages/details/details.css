@@ -2,22 +2,41 @@
   width: 100%;
   align-self: center;
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 2%;
+  margin-top: 3%;
 }
 
+#parent_div1 {
+  margin-left: 8%;
+}
 #parent_div1 img {
+  margin-top: 6%;
   width: 100%;
+  border-radius: 15px;
+}
+
+span {
+  font-weight: 700;
+}
+
+#child_div1 {
+  display: flex;
+  margin: 0% 0% 0% 0%;
 }
 #parent_div2 {
-  margin-left: 0px;
-  padding: 3%;
+  margin-left: 0%;
+  padding: 1%;
   text-align: left;
+}
+
+#parent_div2 h3 {
+  font-weight: 600;
+  margin: 3% 0%;
 }
 
 #price_div {
   display: flex;
-  gap: 5px;
+  gap: 1rem;
 }
 
 .cPrice {
@@ -35,65 +54,75 @@
 #child_div4 {
   display: flex;
   align-content: center;
-  margin-top: 20px;
+  margin-top: 4%;
 }
 
-.button {
-  color: white;
+.buttonDiv1 {
+  color: whitesmoke;
   font-size: 20px;
-  border-radius: 12px;
-  background-color: #8863fb;
-  height: 48px;
-  width: 180px;
+  border-radius: 2rem;
+  background-color: purple;
+  height: 3rem;
+  width: 10rem;
   margin-left: 2%;
+  gap: 1rem;
 }
 
-.p_color {
-  color: #8863fb;
+.pColor {
+  color: purple;
+  font-weight: 700;
 }
 
 .condition_div {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
+  gap: 0rem;
+  padding: 1% 0% 1% 1%;
+}
+
+.condition_div h5 {
+  text-align: left !important;
+  padding: 7% 0%;
 }
 
 @media (max-width: 900px) {
-  .item img {
+  .itemsDiv1 img {
     height: 100%;
     width: 50%;
   }
-  .item {
+  .itemsDiv1 {
     justify-content: center;
     overflow: hidden;
     width: 100%;
   }
+  #parent_div1 {
+    margin-left: 4%;
+  }
 }
 @media (max-width: 1200px) {
-  .item img {
+  .itemsDiv1 img {
     height: 100%;
     width: 55%;
   }
-  .item {
+  .itemsDiv1 {
     justify-content: center;
     width: 100%;
   }
 }
-
-.item {
+.itemsDiv1 {
   background-color: #1c0333;
   display: flex;
   width: 100%;
   height: 200px;
+  color: white;
 }
 
-.item img {
+.itemsDiv1 img {
   background-color: #1c0333;
 }
 
-.item h5,
-p {
-  color: white;
+.itemsDiv1 h5 p {
   justify-content: center;
 }
 
@@ -111,6 +140,7 @@ p {
 .greetings_div {
   display: flex;
   padding: 1% 0.5%;
+  border-radius: 2px solid black;
 }
 
 @media (max-width: 600px) {
@@ -119,49 +149,62 @@ p {
   }
   #gcard {
     width: 100%;
+    overflow: hidden;
+  }
+  #parent_div1 {
+    margin-left: 0%;
   }
 }
 .greetings_div h3 {
   margin-top: 4%;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
 .greetings_div h2 {
   margin-top: 2%;
+  text-align: center;
 }
 
 #gcard {
-  width: 120%;
+  width: 100%;
   height: 325px;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .commitment {
   font-family: "Cormorant Garamond", Sans-serif;
-  font-size: 21px;
+  font-size: 16px;
   font-weight: 600;
-  font-style: italic;
+  font-style: normal;
   line-height: 24px;
-  justify-content: center;
-  color: white;
-  background-color: #89134c;
+  text-align: center;
+  margin-top: 2%;
+  color: rgb(0, 0, 0);
+  background-color: #d1adda;
 }
 
 .call {
-  background-color: #1c0333;
+  background-color: #d1adda;
   width: 100%;
-  height: 350px;
+  height: 30vh;
+  text-align: center;
+  padding: 1% 1% 1% 1%;
 }
 
 .call h3 {
-  color: white;
+  color: black;
+}
+input {
+  border-radius: 10px;
 }
 
 .call h4 {
-  color: white;
+  color: black;
 }
 .call label {
-  color: white;
+  color: black;
   text-align: left;
 }
 
@@ -169,8 +212,8 @@ p {
   width: 270px;
   height: 25px;
   border-color: #8863fb;
-  color: white;
-  background-color: #1c0333;
+  color: rgb(0, 0, 0);
+  background-color: #fefeff;
 }
 
 .call img {
@@ -179,37 +222,54 @@ p {
   width: 90px;
 }
 .buttonCall {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 20px;
   border-radius: 12px;
   margin-top: 12px;
-  background-color: #8863fb;
+  background-color: purple;
   height: 40px;
   width: 280px;
 }
 
 .trust {
-  background-color: #230939;
+  background-color: #d1adda;
   width: 100%;
-  height: 370px;
+  height: 70vh;
+  text-align: center;
+  padding: 1% 1% 1% 1%;
 }
 
 .trust img {
-  margin-top: 10px;
+  margin-left: 40%;
+  text-align: center;
 }
 
 .trust h4 {
-  color: white;
+  color: black;
 }
 
 .knowmore {
-  background-color: #230939;
-  border-color: #8863fb;
+  background-color: purple;
+  border-radius: 10px;
+  color: white;
   height: 48px;
   width: 168px;
-  color: white;
+  /* color: white; */
   font-weight: 700;
   font-size: 15px;
+}
+@media (max-width: 900px) {
+  .call {
+    width: 100%;
+  }
+  .trust {
+    width: 100%;
+  }
+  .trust img {
+    margin-top: 10px;
+    margin-left: 27%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -218,10 +278,12 @@ p {
   }
   .call {
     width: 100%;
-    /* padding: 4%; */
+    margin-top: 4%;
   }
   .trust {
     width: 100%;
+    padding-bottom: 0;
+    border: 2px solid black;
   }
   .call input {
     width: 70%;
@@ -235,14 +297,17 @@ p {
   }
   #gcard {
     width: 100%;
+    overflow: hidden;
+  }
+  .trust img {
+    margin-top: 10px;
+    margin-left: 15%;
+    text-align: center;
   }
 }
 
-@media (max-width: 900px) {
-  .call {
-    width: 100%;
-  }
-  .trust {
-    width: 100%;
-  }
+.certification {
+  margin-top: 5%;
+  text-align: center;
+  padding: 0% 1% 0% 1%;
 }

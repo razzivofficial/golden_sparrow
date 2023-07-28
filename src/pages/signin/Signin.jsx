@@ -8,7 +8,8 @@ import "./signin.css"; // Create a new CSS file for SignIn styles
 import gif1 from "../../components/resources/gif8.gif";
 import gif2 from "../../components/resources/gif10.gif";
 import gif3 from "../../components/resources/gif7.gif";
-import gif4 from "../../components/resources/gif4.gif";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 import {
   Input,
   Grid,
@@ -16,7 +17,6 @@ import {
   ColorModeScript,
   extendTheme,
   Center,
-  Link,
   FormControl,
   FormLabel,
   Button,
@@ -28,6 +28,8 @@ import {
   MenuButton,
   MenuGroup,
 } from "@chakra-ui/react";
+
+import { Link } from "react-router-dom";
 
 // Create a custom theme with dark mode enabled
 const theme = extendTheme({
@@ -74,32 +76,24 @@ function SignIn() {
   const [subscribe, setSubscribe] = useState("");
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    setIsError(true);
-    setDisplayedGif(gifMap.error);
-  };
-
-  const handleSignin = () => {
+  const handleSignin = async () => {
     let errors = {};
     setIsError(false);
 
     if (!validateEmail(email) || email === "") {
       errors.email = "Please check your Email";
-      alert("Please check your Email");
-      // toast.error(errors.email);
-      // setIsError(true);
+      toast.error(errors.email);
+      setIsError(true);
       setDisplayedGif(gifMap.error);
     } else if (!validatePassword(pass)) {
       errors.pass = "Password is not Matching";
-      alert("Password is not Matching");
-      // toast.error(errors.pass);
-      // setIsError(true);
+      toast.error(errors.pass);
+      setIsError(true);
       setDisplayedGif(gifMap.error);
     } else if (!subscribe) {
       errors.subscribe = "Please Subscribe";
-      alert("Please Subscribe");
-      // toast.error(errors.subscribe);
-      // setIsError(true);
+      toast.error(errors.subscribe);
+      setIsError(true);
       setDisplayedGif(gifMap.error);
     }
 
@@ -108,148 +102,164 @@ function SignIn() {
       return;
     }
 
-    fetch("http://localhost:6060/users", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const val = data.find((el) => el.email === email);
-        if (val !== undefined) {
-          if (val.email === email && val.password === pass) {
-            alert("Login Successfully !!!");
-            navigate("/");
-            localStorage.setItem("token", JSON.stringify(Date.now()));
-          } else {
-            alert("Something Went Wrong!");
-          }
-        } else {
-          alert("Wrong Credentials !!");
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/customer/signin`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            pass,
+          }),
         }
-      });
+      );
+      if (response.ok) {
+        const res = await response.json();
+        console.log(res);
+        localStorage.setItem("token", JSON.stringify(res.token));
+        toast.success("Sign in Successfull !!");
+        navigate("/jwellery/Bestseller");
+      } else {
+        const err = await response.json();
+        throw new Error(err);
+      }
+    } catch (error) {
+      alert(error.msg);
+    }
   };
 
   const handleGoogle = (decoded) => {
-    fetch("http://localhost:6060/users", {
+    fetch(`${process.env.REACT_APP_BASE_URL}/customer`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         const val = data.find((el) => el.email === decoded.email);
         console.log(val);
         if (val) {
-          alert("Login Successfull !!!");
+          toast.success("Login Successfull !!!");
           navigate("/");
         } else {
-          alert("Account does not Exist!!");
+          toast.error("Account does not Exist!!");
         }
       });
   };
 
   return (
-    <ChakraProvider theme={theme}>
-      <div className="gifCss">
-        <img className="gif-image" src={displayedGif} alt="GIF" />
-      </div>
-      <div id="title">
-        <h1>Welcome Back!</h1>
-      </div>
+    <>
+      <Navbar />
+      <ChakraProvider theme={theme}>
+        <div className="gifCss">
+          <img className="gif-image" src={displayedGif} alt="GIF" />
+        </div>
+        <div id="title">
+          <Text>Welcome Back !!!</Text>
+        </div>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <Box p={4}>
+          <Center h={{ base: "60vh", md: "40vh" }}>
+            <Grid
+              templateColumns={{ md: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
+              gap={7}
+              maxW="600px">
+              <FormControl isRequired>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  variant="outline"
+                  type="email"
+                  id="email"
+                  placeholder="Enter Email"
+                  onChange={(e) => {
+                    validateEmail(email);
+                    setEmail(e.target.value);
+                    handleFieldChange(e);
+                  }}
+                />
+              </FormControl>
 
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <Box p={4}>
-        <Center h={{ base: "60vh", md: "40vh" }}>
-          <Grid
-            templateColumns={{ md: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" }}
-            gap={7}
-            maxW="600px"
-          >
-            <FormControl isRequired>
-              <FormLabel>Email</FormLabel>
-              <Input
-                variant="filled"
-                type="email"
-                id="email"
-                placeholder="Enter Email"
-                onChange={(e) => {
-                  validateEmail(email);
-                  setEmail(e.target.value);
-                  handleFieldChange(e);
-                }}
-              />
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Password</FormLabel>
+                <Input
+                  variant="outline"
+                  type="password"
+                  id="password"
+                  placeholder="Enter Password"
+                  onChange={(e) => {
+                    setPass(e.target.value);
+                    handleFieldChange(e);
+                  }}
+                />
+              </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel>Password</FormLabel>
-              <Input
-                variant="filled"
-                type="password"
-                id="password"
-                placeholder="Enter Password"
-                onChange={(e) => {
-                  setPass(e.target.value);
-                  handleFieldChange(e);
-                }}
-              />
-            </FormControl>
+              <Menu>
+                <MenuButton as={Button} colorScheme="blue">
+                  Subscribe
+                </MenuButton>
+                <MenuList>
+                  <MenuGroup title="Subscribe">
+                    <MenuItem
+                      onClick={(e) => {
+                        setSubscribe("Subscribe to Newsletters");
+                      }}>
+                      Subscribe to Newsletters
+                    </MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        setSubscribe("Give Offer Updates");
+                      }}>
+                      Give Offer Updates
+                    </MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        setSubscribe("Both");
+                      }}>
+                      Both
+                    </MenuItem>
+                  </MenuGroup>
+                </MenuList>
+              </Menu>
 
-            <Menu>
-              <MenuButton as={Button} colorScheme="blue">
-                Subscribe
-              </MenuButton>
-              <MenuList>
-                <MenuGroup title="Subscribe">
-                  <MenuItem
-                    onClick={(e) => {
-                      setSubscribe("Subscribe to Newsletters");
-                    }}
-                  >
-                    Subscribe to Newsletters
-                  </MenuItem>
-                  <MenuItem
-                    onClick={(e) => {
-                      setSubscribe("Give Offer Updates");
-                    }}
-                  >
-                    Give Offer Updates
-                  </MenuItem>
-                  <MenuItem
-                    onClick={(e) => {
-                      setSubscribe("Both");
-                    }}
-                  >
-                    Both
-                  </MenuItem>
-                </MenuGroup>
-              </MenuList>
-            </Menu>
-
-            <Button
-              colorScheme="purple"
-              mt={{ base: 4, md: 0 }}
-              onClick={handleSignin}
-            >
-              Sign In
-            </Button>
-            <Text as="i" mt={2}>
-              New user?{" "}
-              <Link href="../signup/SignUp" color="purple">
-                Sign Up
-              </Link>
-            </Text>
-            <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  var decoded = jwt_decode(credentialResponse.credential);
-                  handleGoogle(decoded);
-                }}
-                onError={() => {
-                  console.log("Signup Failed");
-                }}
-              />
-            </GoogleOAuthProvider>
-          </Grid>
-        </Center>
-      </Box>
-    </ChakraProvider>
+              <Button
+                colorScheme="purple"
+                mt={{ base: 4, md: 0 }}
+                onClick={handleSignin}>
+                Sign In
+              </Button>
+              <Text as="i" mt={2}>
+                New user?{" "}
+                <Link to={"/signup"} ml={"1%"}>
+                  <Button
+                    variant={"outline"}
+                    fontWeight={"700"}
+                    fontSize={"1rem"}
+                    pl={"1rem"}
+                    bg={"pink"}>
+                    SIGN UP NOW
+                  </Button>
+                </Link>
+              </Text>
+              <GoogleOAuthProvider clientId="434017127253-3us7g8cl1ghhjb8sgln8j934ertpqofh.apps.googleusercontent.com">
+                <GoogleLogin
+                  onSuccess={(credentialResponse) => {
+                    var decoded = jwt_decode(credentialResponse.credential);
+                    handleGoogle(decoded);
+                  }}
+                  onError={() => {
+                    console.log("Signup Failed");
+                  }}
+                />
+              </GoogleOAuthProvider>
+            </Grid>
+          </Center>
+        </Box>
+      </ChakraProvider>
+      <ToastContainer />
+      <Footer />
+    </>
   );
 }
 
