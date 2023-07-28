@@ -52,16 +52,19 @@ function Cart({ image, link, value, product, category, id }) {
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="filled">
-        <Image objectFit="cover" src={image} alt="" />
+        <Image
+          objectFit="cover"
+          src={image}
+          maxW={{ base: "100%", sm: "150px" }}
+          alt=""
+        />
 
-        <Stack flex="1" p="4">
-          <CardHeader>
-            <Heading size="sm" mb="1">
+        <Stack>
+          <CardBody>
+            <Heading size="sm" mb="5">
               {link}
             </Heading>
-          </CardHeader>
 
-          <CardBody>
             <Text fontSize="sm">
               Category: {category}, {product}
             </Text>
@@ -69,21 +72,20 @@ function Cart({ image, link, value, product, category, id }) {
               Rs: {value} /-
             </Text>
           </CardBody>
-          <CardFooter>
-            <Flex justifyContent="flex-end" alignItems="center">
-              <IconButton
-                size="sm"
-                isRound={true}
-                variant="solid"
-                colorScheme="red"
-                aria-label="Done"
-                fontSize="15px"
-                onClick={handleCart}
-                icon={<DeleteIcon />}
-              />
-            </Flex>
-          </CardFooter>
         </Stack>
+        <Flex flexWrap="wrap" justifyContent="flex-end" alignItems="center">
+          <IconButton
+            m="4"
+            size="sm"
+            isRound={true}
+            variant="solid"
+            colorScheme="red"
+            aria-label="Done"
+            fontSize="15px"
+            onClick={handleCart}
+            icon={<DeleteIcon />}
+          />
+        </Flex>
       </Card>
       <ToastContainer />
     </Box>

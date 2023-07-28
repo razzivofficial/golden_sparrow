@@ -15,27 +15,32 @@ export default function Details() {
   const navigate = useNavigate();
 
   const handleCart = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/jewellery/addtocart/${id.id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
+    if (token) {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/jewellery/addtocart/${id.id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+            },
+          }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          toast.success("Product Added to Cart !");
+          navigate("/addtocart");
+        } else {
+          const err = await res.json();
+          throw new Error(err);
         }
-      );
-      if (res.ok) {
-        const data = await res.json();
-        toast.success("Product Added to Cart !");
-        navigate("/addtocart");
-      } else {
-        const err = await res.json();
-        throw new Error(err);
+      } catch (error) {
+        alert(error.msg);
       }
-    } catch (error) {
-      alert(error.msg);
+    } else {
+      toast.error("Sign in to Add the Product to the Cart");
+      navigate("/signin");
     }
   };
 

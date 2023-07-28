@@ -16,12 +16,10 @@ app.use(cors());
 app.use("/customer", userRoute);
 
 app.use("/ourproducts", allproductsroute);
-
-// app.use(Auth);
+app.use("/api/payment", router);
+app.use(Auth);
 
 app.use("/jewellery", cartRoute);
-
-app.use("/api/payment", router);
 
 app.get("/", (req, res) => {
   res.send("Hello world Dipti!");

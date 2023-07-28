@@ -414,7 +414,7 @@ export default function Navbar() {
             </Link>
             <Menu>
               <MenuButton as={Button} className="btn">
-                OTHER JWELLERY
+                OTHER JEWELLERY
               </MenuButton>
               <MenuList>
                 <MenuItem>
@@ -460,7 +460,7 @@ export default function Navbar() {
           boxShadow={"xl"}>
           {searchData.map((el) => {
             return (
-              <Text pb={"0.6%"} onClick={() => handlePara(el.id)}>
+              <Text pb={"0.6%"} onClick={() => handlePara(el._id)}>
                 <SearchIcon pr={"0.4%"} />
                 {el.link}
               </Text>

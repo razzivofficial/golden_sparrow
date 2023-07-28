@@ -6,6 +6,8 @@ import SignUp from "./pages/signup/Signup";
 import AddToCart from "./pages/addToCart/addCart";
 import SignIn from "./pages/signin/Signin";
 import Auth from "./Auth";
+import Invoice from "./pages/invoice/Invoice";
+
 function AllRoutes() {
   return (
     <Routes>
@@ -14,11 +16,20 @@ function AllRoutes() {
       <Route path="/details/:id" element={<Details />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
+
       <Route
         path="/addtocart"
         element={
           <Auth>
-            <AddToCart/>
+            <AddToCart />
+          </Auth>
+        }
+      />
+      <Route
+        path="/invoice/:id"
+        element={
+          <Auth>
+            <Invoice />
           </Auth>
         }
       />

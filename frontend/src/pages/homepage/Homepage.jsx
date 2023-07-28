@@ -2,21 +2,16 @@ import React from "react";
 import "./homepage.css";
 import Cardslider from "../../components/cardSlider/cardslider";
 import Slider from "../../components/slider/Slider";
-import CountdownTimer from "../../components/CountdownTimer/CountdownTimer";
 import Jel1 from "../../components/resources/1.jpg";
 import Jel2 from "../../components/resources/2.jpg";
 import Jel3 from "../../components/resources/3.webp";
 import bg from "../../components/resources/bg1.jpg";
-import expVid from "../../components/resources/expVid.mp4";
+import expVid from "../../components/resources/expVid1.mp4";
 import CardGallery from "../../components/CardGallary/CardGallary";
 import { Image } from "@chakra-ui/react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-
-const SALES_TIMER = 3 * 24 * 60 * 60 * 1000;
-const NOW_IN_MS = new Date().getTime();
-
-const dateTimeAfterThreeDays = NOW_IN_MS + SALES_TIMER;
+import Clock from "../../components/clock/clock";
 
 export default function Homepage() {
   return (
@@ -44,17 +39,17 @@ export default function Homepage() {
           <br />
 
           <div className="imageDiv">
-            <Image w="33%" objectFit="cover" src={Jel1} alt="error" />
-            <Image w="33%" objectFit="cover" src={Jel2} alt="error" />
-            <Image w="33%" objectFit="cover" src={Jel3} alt="error" />
+            <Image w="30%" objectFit="cover" src={Jel1} alt="error" />
+            <Image w="40%" objectFit="cover" src={Jel2} alt="error" />
+            <Image w="30%" objectFit="cover" src={Jel3} alt="error" />
           </div>
         </div>
         <div class="ten">
           <h1>Sparkling Deals Await! Don't Miss Out - Time is Ticking!</h1>
-          <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+          <Clock />
         </div>
-        <div className="promo">
-          <video src={expVid} autoPlay muted></video>
+        <div>
+          <video src={expVid} loop autoPlay muted></video>
         </div>
         <CardGallery />
       </div>

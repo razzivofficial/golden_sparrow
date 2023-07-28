@@ -16,7 +16,7 @@ function CardSlider() {
       content: (
         <Card
           imagen={ring}
-          title="Rings"
+          title="Ring"
           subtitle="Adorn your fingers with elegance and grace - our exquisite rings are crafted to make your every moment shine"
         />
       ),

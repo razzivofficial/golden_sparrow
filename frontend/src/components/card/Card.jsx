@@ -79,8 +79,7 @@ const PCard = ({ image, link, product, value, id }) => {
       p={"1%"}
       border={"1px solid black"}
       bg={colorMode === "dark" ? "gray.700" : "white"}
-      borderRadius={"20px"}
-    >
+      borderRadius={"20px"}>
       <Flex justifyContent="flex-end">
         <IconButton
           isRound={true}
@@ -91,11 +90,7 @@ const PCard = ({ image, link, product, value, id }) => {
           icon={isFavorite ? <FcLike /> : <FiHeart />}
           onClick={handleWishlistClick}
           color={
-            isFavorite
-              ? "red.500"
-              : colorMode === "dark"
-              ? "white"
-              : "gray.600"
+            isFavorite ? "red.500" : colorMode === "dark" ? "white" : "gray.600"
           }
         />
       </Flex>
@@ -106,17 +101,15 @@ const PCard = ({ image, link, product, value, id }) => {
           </div>
         </Center>
         <Stack mt="6" spacing="1">
-          <Heading size="md">{value}</Heading>
+          <Heading size="md">Rs: {value}/-</Heading>
           <Text
             color={colorMode === "dark" ? "white" : "black.400"}
-            fontSize="sm"
-          >
+            fontSize="sm">
             {product}
           </Text>
           <Text
             fontSize="xs"
-            color={colorMode === "dark" ? "gray.300" : "black.500"}
-          >
+            color={colorMode === "dark" ? "gray.300" : "black.500"}>
             {link}
           </Text>
         </Stack>
@@ -125,8 +118,7 @@ const PCard = ({ image, link, product, value, id }) => {
         <Button
           variant="outline"
           colorScheme="purple"
-          onClick={() => handleClick()}
-        >
+          onClick={() => handleClick()}>
           Show Details
         </Button>
         <Button variant="outline" colorScheme="purple" onClick={handleCart}>

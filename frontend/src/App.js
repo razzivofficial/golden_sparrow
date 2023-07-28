@@ -6,11 +6,14 @@ import SignUp from "./pages/signup/Signup";
 import AddToCart from "./pages/addToCart/addCart";
 import PCart from "./components/cart/cart";
 import Cart from "./components/cart/cart";
+import Chatbot from "./components/chatbot/chatbot";
 
 function App() {
   return (
     <>
       <AllRoutes />
+      <Chatbot />
+      {/* <Pin /> */}
       {/* <Details /> */}
       {/* <Invoice /> */}
       {/* <SignUp /> */}

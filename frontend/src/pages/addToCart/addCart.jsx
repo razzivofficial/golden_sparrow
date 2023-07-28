@@ -14,11 +14,13 @@ import {
   Icon,
   useBreakpoint,
   Image,
+  Input,
+  Spacer,
 } from "@chakra-ui/react";
 import "./addCart.css";
 import { TbDiscount2 } from "react-icons/tb";
 import { AiOutlineAim } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
@@ -31,11 +33,47 @@ function AddToCart() {
     xl: "80em", // 1280px
   };
 
+  const [filteredData, setFilteredData] = useState([]);
+  const [showData, setShowData] = useState([]);
+  const [pincode, setPincode] = useState("");
   const token = JSON.parse(localStorage.getItem("token"));
   const [arr, setArr] = useState([]);
+  const navigate = useNavigate();
   let price = 0;
   let discount = 0;
   let totalPrice = 0;
+
+  const handlePincodeChange = (e) => {
+    setPincode(e.target.value);
+  };
+
+  const getPinData = async () => {
+    try {
+      const res = await fetch("http://localhost:6060/pin", {
+        method: "GET",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        setShowData(data);
+      } else {
+        const err = await res.json();
+        console.log(err);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlePincodeSubmit = () => {
+    const data = showData.filter((el) => el.pincode.toString() === pincode);
+    if (data) {
+      setFilteredData(data);
+    } else {
+      console.log("Data not found");
+    }
+  };
+
   const getData = async () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_BASE_URL}/jewellery/`, {
@@ -90,6 +128,8 @@ function AddToCart() {
         } catch (error) {
           console.log(error);
         }
+
+        navigate(`/invoice/${data.id}`);
       },
       theme: {
         color: "pink",
@@ -101,6 +141,7 @@ function AddToCart() {
 
   useEffect(() => {
     getData();
+    getPinData();
   }, []);
 
   return (
@@ -113,8 +154,7 @@ function AddToCart() {
             md: "repeat(1, 2fr)",
             lg: "repeat(2, 2fr)",
           }}
-          gap="10"
-          maxW="100%">
+          gap="10">
           <Stack>
             {arr.length > 0 ? (
               arr.map((el) => {
@@ -165,19 +205,32 @@ function AddToCart() {
               bg="#f6f3f9"
               fontFamily="'InterSemiBold','Helvetica Neue',Helvetica,Arial,sans-serif">
               <CardBody>
-                <Flex justifyContent="space-between">
-                  <Text fontSize="sm" color={"black"}>
-                    <Icon fontSize="25px" as={AiOutlineAim} /> Check Delivery &
-                    Store Details
+                <Flex>
+                  <Text fontSize={"15px"} fontWeight={"600"}>
+                    Enter Your Pincode
                   </Text>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    colorScheme="purple"
-                    color={"black"}>
-                    Enter Pincode
+                  <Spacer />
+                  <Input
+                    w={"30%"}
+                    type={"text"}
+                    onChange={handlePincodeChange}
+                  />
+                  <Spacer />
+                  <Button variant={"unstyled"} onClick={handlePincodeSubmit}>
+                    Submit
                   </Button>
                 </Flex>
+                {filteredData.length > 0 ? (
+                  <Box>
+                    <Text>{filteredData[0].officeName}</Text>
+                    <Text>{filteredData[0].pincode}</Text>
+                    <Text>{filteredData[0].taluk}</Text>
+                    <Text>{filteredData[0].districtName}</Text>
+                    <Text>{filteredData[0].stateName}</Text>
+                  </Box>
+                ) : (
+                  <Text>No Data Found</Text>
+                )}
               </CardBody>
             </Card>
             <Card
