@@ -3,7 +3,7 @@
 Golden Sparrow Jewelry Store
 
 Welcome to the repository for our website!
-This is a web application built using MongoDB,Express.js,React, and Node.js . It is a clone of the popular online jewelry store, CaratLane, offering users the opportunity to browse a wide range of exquisite jewelry items, explore detailed product information, add items to their shopping cart, and proceed through a seamless checkout process with a secure payment system. The application incorporates user authentication and registration functionalities, enabling users to create accounts, manage their profiles, and save their favorite jewelry items in a wishlist.
+This is a web application built using MongoDB,Express.js,React, and Node.js . It is a clone of the popular online jewelry store 'CaratLane', offering users the opportunity to browse a wide range of exquisite jewelry items, explore detailed product information, add items to their shopping cart, and proceed through a seamless checkout process with a secure payment system. The application incorporates user authentication and registration functionalities, enabling users to create accounts, manage their profiles, and save their favorite jewelry items in a wishlist.
 
 ## Logo
 
@@ -23,6 +23,8 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ➜ Checkout Process with Payment System: A secure and user-friendly checkout process is provided, allowing users to enter shipping details, select payment methods, and place their orders. The application integrates a payment system for processing transactions securely.
 
+➜ Address Finder by Pincode: Users can easily find their shipping address by entering their pincode. The application fetches the relevant address details associated with the pincode, streamlining the checkout process and providing a convenient user experience.
+
 ➜ User Authentication: The application offers user registration and login functionality, providing a personalized experience for each user.
 
 ➜ User Profile: Registered users can access their profiles, view their order history, update personal information, and manage their wishlist.
@@ -35,9 +37,13 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 **Frontend:** HTML, CSS, JavaScript, React.js
 
-**Backend:** Node.js, Express.js
+**Backend:** Node.js, Express.js, Nodemon
 
 **Database:** MongoDB
+
+**Authentication:** JsonWebtoken and Bcrypt.
+
+**APIS:** Razorpay Payment Gateway
 
 ## UserFlow
 
