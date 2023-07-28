@@ -7,7 +7,7 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## Logo
 
-<img src="Logo.jpg" width="200">
+![Logo](https://github.com/razzivofficial/golden_sparrow/assets/113410862/536b4a6b-1695-4aa4-9504-022c15155780)
 
 ## Features
 
