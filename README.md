@@ -7,7 +7,7 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## Logo
 
-<img src="Logo-1.jpg" width="200">
+<img src="Logo.jpg" width="200">
 
 ## Features
 
@@ -41,7 +41,7 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ## UserFlow
 
-![Alt text](userflow-1.jpg)
+![Alt text](userflow.jpg)
 
 Explanation:
 
