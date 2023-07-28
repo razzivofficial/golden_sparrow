@@ -67,11 +67,7 @@ Once the user confirms the order, they receive an Order Confirmation.
 Please note that this diagram provides a general overview of the user flow, and the actual implementation may have additional interactions and branches based on the specific design and functionality of the CaratLane jewelry website clone.
 
 ## Screenshots
-![Screenshot (488)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/67869c11-9038-473b-ac8e-1ea5d0598649)
-![Screenshot (489)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/49c5ad41-f53a-4ce5-a3c6-54bf089cf03a)
-![Screenshot (490)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/14e9e816-2945-4d42-ad4d-a6158b5af370)
-![Screenshot (491)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/b25fdf28-59f2-4e63-a3dd-311cb29172aa)
-![Screenshot (492)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/c3401a7c-0a5f-4f1a-b4b4-e061571e2e09)
+
 ![Screenshot (469)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/c3f56049-fdb8-4e48-8fe2-133cbe255812)
 ![Screenshot (470)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/e4ac02b9-8526-4c33-a6be-645c6b75d07d)
 ![Screenshot (471)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/c215fa7e-7241-4d59-8b9b-f95e8f369b15)
@@ -91,6 +87,12 @@ Please note that this diagram provides a general overview of the user flow, and 
 ![Screenshot (485)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/9afdb748-d2d1-4884-9155-d9c9f6c1ccc5)
 ![Screenshot (486)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/932834c0-793f-4ee6-841d-9bfcc281989d)
 ![Screenshot (487)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/f6224603-4f60-409c-bf4e-9de9a9f28c1a)
+![Screenshot (488)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/67869c11-9038-473b-ac8e-1ea5d0598649)
+![Screenshot (489)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/49c5ad41-f53a-4ce5-a3c6-54bf089cf03a)
+![Screenshot (490)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/14e9e816-2945-4d42-ad4d-a6158b5af370)
+![Screenshot (491)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/b25fdf28-59f2-4e63-a3dd-311cb29172aa)
+![Screenshot (492)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/c3401a7c-0a5f-4f1a-b4b4-e061571e2e09)
+![Screenshot (493)](https://github.com/razzivofficial/golden_sparrow/assets/115134901/5dcc3c31-7e5e-48f4-8dd6-ec02dc0a939c)
 
 ## FAQ
 
