@@ -1,4 +1,3 @@
-
 # Project Title
 
 Golden Sparrow Jewelry Store
@@ -6,12 +5,11 @@ Golden Sparrow Jewelry Store
 Welcome to the repository for our website!
 This is a web application built using MongoDB,Express.js,React, and Node.js . It is a clone of the popular online jewelry store, CaratLane, offering users the opportunity to browse a wide range of exquisite jewelry items, explore detailed product information, add items to their shopping cart, and proceed through a seamless checkout process with a secure payment system. The application incorporates user authentication and registration functionalities, enabling users to create accounts, manage their profiles, and save their favorite jewelry items in a wishlist.
 
-
-
 ## Logo
 
-## Features
+<img src="Logo-1.jpg" width="200">
 
+## Features
 
 ➜ Browsing Categories: Users can explore various jewelry categories, such as necklaces, earrings, rings, bracelets, etc. on the homepage.
 
@@ -33,10 +31,6 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 ➜ Responsive Design: The application is designed to be responsive, ensuring an optimal user experience across various devices, including desktops, tablets, and smartphones.
 
-
-
-
-
 ## Tech Stack
 
 **Frontend:** HTML, CSS, JavaScript, React.js
@@ -45,10 +39,9 @@ This is a web application built using MongoDB,Express.js,React, and Node.js . It
 
 **Database:** MongoDB
 
-
-
-
 ## UserFlow
+
+![Alt text](userflow-1.jpg)
 
 Explanation:
 
@@ -73,16 +66,9 @@ Once the user confirms the order, they receive an Order Confirmation.
 
 Please note that this diagram provides a general overview of the user flow, and the actual implementation may have additional interactions and branches based on the specific design and functionality of the CaratLane jewelry website clone.
 
-
-
-
 ## Screenshots
 
-
-
-
 ## FAQ
-
 
 ➜ What is the CaratLane Jewelry Website Clone?
 
@@ -108,14 +94,13 @@ Yes, We welcome contributions! If you are familiar with web development using HT
 
 If you encounter any bugs or technical issues while using the website, please open an issue in our GitHub repository. Provide a detailed description of the problem, steps to reproduce it, and any relevant error messages. We'll investigate and work towards resolving the issue.
 
-➜ Can I request new features for the CaratLane Jewelry Website    Clone?
+➜ Can I request new features for the CaratLane Jewelry Website Clone?
 
 Absolutely! We appreciate your feature requests. If you have ideas for new functionalities or improvements, please open a feature request on GitHub. Explain the functionality you envision and how it would benefit the users of the website.
 
 ➜ Is user registration required to browse the jewelry items?
 
-No, user registration is not mandatory to browse the jewelry      items. However, creating an account allows you to access additional features like the shopping cart and wishlist.
-
+No, user registration is not mandatory to browse the jewelry items. However, creating an account allows you to access additional features like the shopping cart and wishlist.
 
 ➜ Is the website responsive and mobile-friendly?
 
@@ -123,12 +108,9 @@ Yes, the CaratLane Jewelry Website Clone is designed to be responsive, providing
 
 If you have any other questions or need further assistance, feel free to reach out to us. We are here to help!
 
-
-
 ## Contributing
 
 We welcome contributions to improve our ! If you have any suggestions or want to report issues, feel free to open an issue or submit a pull request. Please follow our contributing guidelines outlined in the repository.
-
 
 ## Installation
 
@@ -152,15 +134,13 @@ Start the frontend server (from the frontend directory)
 Start the backend server (from the backend directory)
 
     cd backend
-    node server.js    
+    node server.js
 
 Access the application by visiting http://localhost:3000 in your web browser.
 
-
-    
 ## Acknowledgements
 
- We would like to express our gratitude to all the contributors and users who have provided valuable feedback and helped improve this website.
+We would like to express our gratitude to all the contributors and users who have provided valuable feedback and helped improve this website.
 
 ## Feedback
 
@@ -174,14 +154,11 @@ How to Provide Feedback:
 
 ➜ General Feedback: If you have any general feedback about the design, user interface, or overall experience of the website, we'd love to hear it. Your opinions are essential to help us create a more enjoyable and user-friendly environment
 
-
-
-
-##
 ##
 
+##
 
-Thank you for your interest in our Jewelry website project!          
+Thank you for your interest in our Jewelry website project!  
 This project aims to create a clone of the CaratLane website to showcase its main functionalities and user interface.
 
 Please refer to the documentation section for installation instructions, usage guidelines, and project structure. If you have any questions or need assistance, do not hesitate to reach out to us. We are here to support and guide you through your experience with the application.
