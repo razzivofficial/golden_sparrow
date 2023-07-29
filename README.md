@@ -197,4 +197,4 @@ Please refer to the documentation section for installation instructions, usage g
 
 Thank you for choosing the CaratLane Jewelry Website Clone. We hope you enjoy exploring and admiring the exquisite world of jewelry with us!
 
-Happy browsing! 🏨
+Happy browsing! 💍
