@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import PCard from "../../components/card/Card";
 import "../jwellery/jwellery.css";
 import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
+import { AppContext } from "../../context";
 import {
   Menu,
   MenuButton,
@@ -14,6 +15,7 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
+  useConst,
 } from "@chakra-ui/react";
 import {
   Button,
@@ -31,6 +33,7 @@ import { color } from "framer-motion";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const Jwellery = () => {
+  const data = useContext(AppContext);
   const type = useParams();
   const [arr, setArr] = useState([]);
   const [showArr, setShowArr] = useState([]);
@@ -70,33 +73,26 @@ const Jwellery = () => {
 
   const sortByCatagory = ["All Products", "Men", "Women", "Kids", "Unisex"];
 
-  const getData = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/ourproducts/allproducts`,
-        {
-          method: "GET",
-        }
-      );
-      if (res.ok) {
-        const data = await res.json();
-        const odata = data.filter((el) => {
-          return el.product == type.type;
-        });
-        console.log(odata);
-        setArr(odata);
-        setShowArr(odata);
-        const start = (page - 1) * 6;
-        const end = page * 6;
-        const newData = odata.slice(start, end);
-        setPageArr(newData);
-      } else {
-        const err = await res.json();
-        throw new Error(err);
-      }
-    } catch (error) {
-      console.log("Error!!!");
-    }
+  const getData = () => {
+    console.log(data);
+    const odata = data.filter((el) => {
+      return el.product == type.type;
+    });
+    console.log(odata);
+    setArr(odata);
+    setShowArr(odata);
+    const start = (page - 1) * 6;
+    const end = page * 6;
+    const newData = odata.slice(start, end);
+    setPageArr(newData);
+  };
+
+  const handlePage = (page) => {
+    const start = (page - 1) * 6;
+    const end = page * 6;
+    console.log(showArr);
+    const newData = showArr.slice(start, end);
+    setPageArr(newData);
   };
 
   const getImage = () => {
@@ -132,27 +128,24 @@ const Jwellery = () => {
     } else {
       const cataData = arr.filter((el) => el.category === str);
       setShowArr(cataData);
-      console.log(cataData);
-      console.log(page);
     }
   };
 
-  const handlePage = (page) => {
-    const start = (page - 1) * 6;
-    const end = page * 6;
-    console.log(showArr);
-    const newData = showArr.slice(start, end);
-    setPageArr(newData);
-  };
+  useEffect(() => {
+    getData();
+    handlePage(page);
+  }, []);
+
+  useEffect(() => {
+    getData();
+    handlePage(page);
+    handleSortByCatagory(str);
+  }, [str]);
 
   useEffect(() => {
     getData();
     getImage();
   }, [type]);
-
-  useEffect(() => {
-    handlePage(page);
-  }, [str]);
 
   return (
     <>

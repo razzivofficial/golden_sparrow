@@ -44,7 +44,12 @@ function AddToCart() {
   let totalPrice = 0;
 
   const handlePincodeChange = (e) => {
-    setPincode(e.target.value);
+    const val = e.target.value;
+    if (val) {
+      setPincode(e.target.value);
+    } else {
+      setFilteredData([]);
+    }
   };
 
   const getPinData = async () => {
@@ -143,6 +148,9 @@ function AddToCart() {
     getData();
     getPinData();
   }, []);
+  useEffect(() => {
+    getData();
+  }, [arr]);
 
   return (
     <>
@@ -211,7 +219,7 @@ function AddToCart() {
                   </Text>
                   <Spacer />
                   <Input
-                    w={"30%"}
+                    w={"20rem"}
                     type={"text"}
                     onChange={handlePincodeChange}
                   />

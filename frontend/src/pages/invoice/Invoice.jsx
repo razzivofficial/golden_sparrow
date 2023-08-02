@@ -186,7 +186,7 @@ export default function Invoice() {
                     colorScheme="blue"
                     variant="solid"
                     onClick={() => {
-                      navigate("/addtocart");
+                      navigate("/jwellery/Bestseller");
                     }}>
                     Go Back
                   </Button>

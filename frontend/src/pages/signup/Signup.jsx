@@ -91,6 +91,11 @@ function SignUp() {
       toast.error(errors.mobile);
       setIsError(true);
       setDisplayedGif(gifMap.error);
+    } else if (mobile.length < 10 || mobile.length > 10) {
+      errors.mobile = "Mobile Number is not a valid one !";
+      toast.error(errors.mobile);
+      setIsError(true);
+      setDisplayedGif(gifMap.error);
     } else if (!validateEmail(email) || email === "") {
       errors.email = "Please check your Email";
       toast.error(errors.email);
@@ -199,6 +204,7 @@ function SignUp() {
                         event.preventDefault();
                       }
                     }}
+                    minLength={10}
                     maxLength={10}
                     required
                   />

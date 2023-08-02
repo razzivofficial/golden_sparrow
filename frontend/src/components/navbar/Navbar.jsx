@@ -1,7 +1,8 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../resources/logo.png";
+
 import {
   Box,
   Flex,
@@ -49,6 +50,7 @@ import {
 
 import "./navbar.css";
 import { Image } from "@chakra-ui/react";
+import { AppContext } from "../../context";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,25 +69,15 @@ export default function Navbar() {
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
-    window.location.reload();
   };
 
   const navigate = useNavigate();
-  const getAllData = () => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/ourproducts/allproducts`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAllDataArr(data);
-      });
-  };
+
+  const data = useContext(AppContext);
 
   const handleSearch = (str) => {
     console.log(str);
-    getAllData();
-    console.log(AllDataArr);
-    const rData = AllDataArr.filter((item) =>
+    const rData = data.filter((item) =>
       item.link.toLowerCase().includes(str.toLowerCase())
     );
     console.log(rData);

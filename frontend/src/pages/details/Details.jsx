@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./details.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
@@ -6,6 +6,7 @@ import Footer from "../../components/footer/Footer";
 import bigLogo from "../../components/resources/bigLogo.png";
 import { Image } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { AppContext } from "../../context";
 
 export default function Details() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -13,6 +14,7 @@ export default function Details() {
   console.log(id.id);
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
+  const data = useContext(AppContext);
 
   const handleCart = async () => {
     if (token) {
@@ -45,18 +47,10 @@ export default function Details() {
   };
 
   const getData = () => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/ourproducts/allproducts`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const odata = data.filter((el) => {
-          return el._id === id.id;
-        });
-        setArr(odata[0]);
-        console.log(arr);
-      });
+    const odata = data.filter((el) => {
+      return el._id === id.id;
+    });
+    setArr(odata[0]);
   };
 
   useEffect(() => {

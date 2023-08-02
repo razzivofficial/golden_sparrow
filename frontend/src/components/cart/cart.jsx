@@ -36,7 +36,6 @@ function Cart({ image, link, value, product, category, id }) {
       if (res.ok) {
         const data = await res.json();
         toast.error("Product Removed from the cart (:");
-        window.location.reload();
       } else {
         const err = await res.json();
         throw new Error(err);

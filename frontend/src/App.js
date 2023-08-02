@@ -12,15 +12,7 @@ function App() {
   return (
     <>
       <AllRoutes />
-      <Chatbot />
-      {/* <Pin /> */}
-      {/* <Details /> */}
-      {/* <Invoice /> */}
-      {/* <SignUp /> */}
-      {/* <AddToCart /> */}
-      {/* <PCart/> */}
-      {/* <AddToCart/> */}
-      {/* <Cart/> */}
+      {/* <Chatbot /> */}
     </>
   );
 }
