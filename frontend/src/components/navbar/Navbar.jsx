@@ -75,6 +75,7 @@ export default function Navbar() {
 
   const data = useContext(AppContext);
 
+  /*Search*/
   const handleSearch = (str) => {
     console.log(str);
     const rData = data.filter((item) =>
@@ -97,19 +98,21 @@ export default function Navbar() {
     setStr("Bracelet");
     localStorage.setItem("product", JSON.stringify(str));
   }
-
+  /* Search Over*/
   return (
     <>
       <Box
         color={useColorModeValue("black", "black")}
         px={4}
         bgColor={"#eddff0"}
-        minWidth={"-webkit-fit-content"}>
+        minWidth={"-webkit-fit-content"}
+      >
         <Flex
           h={20}
           alignItems={"center"}
           justifyContent={"space-between"}
-          bgColor={"#eddff0"}>
+          bgColor={"#eddff0"}
+        >
           <IconButton
             color={useColorModeValue("black", "black")}
             size={"md"}
@@ -123,7 +126,8 @@ export default function Navbar() {
               display={"flex"}
               w={{ base: "10rem", md: "15rem" }}
               fontSize={{ sm: "10px", md: "20px" }}
-              mt={"1%"}>
+              mt={"1%"}
+            >
               <ReactIcon mr={"8px"} fontSize={{ md: "35px" }} />
               <Link to={"/"}>
                 <Image src={logo}></Image>
@@ -133,14 +137,16 @@ export default function Navbar() {
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "none", lg: "flex" }}
-              mr={"10px"}>
+              mr={"10px"}
+            >
               <ButtonGroup fontWeight={"300"} spacing={5}>
                 <Button
                   variant={"unstyled"}
                   leftIcon={<TbHomeEco />}
                   fontWeight={"300"}
                   fontSize={"xs"}
-                  className="abtn">
+                  className="abtn"
+                >
                   FREE TRY AT HOME
                 </Button>
 
@@ -149,7 +155,8 @@ export default function Navbar() {
                   leftIcon={<FaHandHoldingHeart />}
                   fontWeight={"300"}
                   fontSize={"xs"}
-                  className="abtn">
+                  className="abtn"
+                >
                   PLAN OF PURCHASE
                 </Button>
               </ButtonGroup>
@@ -176,7 +183,8 @@ export default function Navbar() {
                     backgroundImage:
                       "linear-gradient(to right, #d63feb, #b06df8, #9187f7, #8299ec, #88a6d9)",
                   }}
-                  display={token ? "none" : "flex"}>
+                  display={token ? "none" : "flex"}
+                >
                   {" "}
                   Signup
                 </Button>
@@ -186,7 +194,8 @@ export default function Navbar() {
                   variant={"outline"}
                   colorScheme="purple"
                   color={useColorModeValue("purple", "purple")}
-                  display={token ? "none" : "flex"}>
+                  display={token ? "none" : "flex"}
+                >
                   Login
                 </Button>
               </Link>
@@ -196,7 +205,8 @@ export default function Navbar() {
                   colorScheme="purple"
                   color={useColorModeValue("purple", "purple")}
                   display={token ? "flex" : "none"}
-                  onClick={handleSignOut}>
+                  onClick={handleSignOut}
+                >
                   Sign Out
                 </Button>
               </Link>
@@ -211,7 +221,8 @@ export default function Navbar() {
               <Button
                 onClick={toggleColorMode}
                 variant={"unstyled"}
-                className="abtn">
+                className="abtn"
+              >
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
             </ButtonGroup>
@@ -223,7 +234,8 @@ export default function Navbar() {
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}
-                color={"black"}>
+                color={"black"}
+              >
                 <Button variant={"unstyled"} className="abtn">
                   <Icon as={FaUserAlt} />
                 </Button>
@@ -284,7 +296,8 @@ export default function Navbar() {
                 variant={"unstyled"}
                 display={"flex"}
                 flexDirection={"column"}
-                onClick={isOpen ? onClose : onOpen}>
+                onClick={isOpen ? onClose : onOpen}
+              >
                 <Spacer />
                 <Link>
                   <Button as={Button} className="btn">
@@ -363,7 +376,8 @@ export default function Navbar() {
           p="2"
           bg={useColorModeValue("white", "black")}
           minWidth={"-moz-fit-content"}
-          display={{ base: "none", md: "none", lg: "block" }}>
+          display={{ base: "none", md: "none", lg: "block" }}
+        >
           <ButtonGroup
             justifyContent={"space-around"}
             display={"flex"}
@@ -371,7 +385,8 @@ export default function Navbar() {
             ml={"10rem"}
             mr={"10rem"}
             flexWrap={"wrap"}
-            color={useColorModeValue("black", "white")}>
+            color={useColorModeValue("black", "white")}
+          >
             <Link to={"/jwellery/Bestseller"}>
               <Button as={Button} className="btn">
                 BEST SELLERS
@@ -449,7 +464,8 @@ export default function Navbar() {
           fontSize={"17px"}
           textTransform={"capitalize"}
           fontWeight={"700"}
-          boxShadow={"xl"}>
+          boxShadow={"xl"}
+        >
           {searchData.map((el) => {
             return (
               <Text pb={"0.6%"} onClick={() => handlePara(el._id)}>
