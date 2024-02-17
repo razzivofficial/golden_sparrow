@@ -2,7 +2,7 @@
 
 Golden Sparrow Jewelry Store
 
-[Live Link](https://goldensparrow.netlify.app/)
+[Live Link](https://goldensparrow.netlify.app/) 
 
 Welcome to the repository for our website!
 This is a web application built using MongoDB,Express.js,React, and Node.js . It is a clone of the popular online jewelry store 'CaratLane', offering users the opportunity to browse a wide range of exquisite jewelry items, explore detailed product information, add items to their shopping cart, and proceed through a seamless checkout process with a secure payment system. The application incorporates user authentication and registration functionalities, enabling users to create accounts, manage their profiles, and save their favorite jewelry items in a wishlist.
